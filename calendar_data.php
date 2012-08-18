@@ -7,13 +7,16 @@ if($pgname == 'calendar_data.php') { $standalone = true; }
 
 $calendardata = array('k' => array(), 'y' => array(), 'a' => array(), 'l' => array());
 $dbh = new PDO($init_data['dbc']); 
-foreach ($dbh->query("SELECT sol, maausk, event, id, dayfree, dayflag FROM events") as $row) {
+foreach ($dbh->query("SELECT maausk, event, id, flags FROM events") as $row) {
+  
+  $row = array_merge($row, eventflags($row['id'],$row['flags']));
   
   if($db_row['sol'] < 3) { //ärme pööripäevi (esialgu) liikumatute hulka lisa
   
     $el = array('n' => compose_day_label($row));
     if($row['dayfree'] == 1) { $el['f'] = 1; }
     if($row['dayflag'] == 1) { $el['l'] = 1; }
+    if($row['shorterworkdayb4'] == 1) { $el['w'] = 1; }
     $calendardata['d'][$row['id']] = $el;
 
     if($row['id'] < 1232) { $key = 'k'; } // kuupäevad

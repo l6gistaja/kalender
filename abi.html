@@ -20,23 +20,23 @@
    <ol type="A">
     <li><a href="#mallid">Tähtpäevade mallid</a></li>
     <li><a href="#idd">Tähtpäevade ID-d</a></li>
-    <li><a href="#tabelid">Tabelid</a></li>
+    <li><a href="#tabelid">Tabelid</a>
         <ol>
 <li><a href="#tabel.events">events<a></li>
 <li><a href="#tabel.runes">runes<a></li>
 <li><a href="#tabel.urlcategories">urlcategories<a></li>
 <li><a href="#tabel.urls">urls<a></li>
         </ol>
+     </li>
+     <li><a href="#bitmap">Bitmapid</a>
+        <ol>
+<li><a href="#bitmap.events.flags">events.flags<a></li>
+        </ol>
+     </li>
    </ol> 
 </li>
 </ol>
-Array
-(
-    [events] => Tähtpäevad.
-    [runes] => <a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.
-    [urlcategories] => Saidid, millelt on teavet võetud.
-    [urls] => Lingid mingile tähtpäevale.
-)
+
 <h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
 
 <table>
@@ -78,7 +78,7 @@ Samuti ei suuda siinkasutatud <a href="tahtpaevad.html#2000">munapüha</a> leidm
 
 <h1><a name="ab">Andmebaas</a></h1>
 
-on 42 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
+on 43 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
 
 Eeldusel et igal tähtpäeval on vähemalt 1 link tabelis urls, oleks lihtne päring kõigi andmete kättesaamiseks:
 <blockquote><pre>
@@ -88,7 +88,7 @@ WHERE e.id = u.event_id AND u.urlcategory_id = c.id
 ORDER BY e.id, c.urlcategory, u.url
 </pre></blockquote>
 
-Andmebaasi struktuuri kirjeldus on saadaval 6 kB andmebaasifailina <a href="descriptions.sdb">descriptions.sdb</a>.
+Andmebaasi struktuuri kirjeldus on saadaval 7 kB andmebaasifailina <a href="descriptions.sdb">descriptions.sdb</a>.
 <h1><a name="mallid">Tähtpäevade mallid</a></h1>
 
 <table>
@@ -169,28 +169,16 @@ Tähtpäevad.<br/><br/>
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
 <tr>
-    <td valign="top"><a name="tabel.events.dayflag">dayflag</a></td>
-    <td valign="top">NUMERIC</td>
-    <td valign="top"><a href="#tabel. "> </a></td>
-    <td>Kui 1, on lipu(heiskamis)päev. </td>
-</tr>
-<tr>
-    <td valign="top"><a name="tabel.events.dayfree">dayfree</a></td>
-    <td valign="top">NUMERIC</td>
-    <td valign="top"><a href="#tabel. "> </a></td>
-    <td>Kui 1, on riigipüha ja puhkepäev. </td>
-</tr>
-<tr>
-    <td valign="top"><a name="tabel.events.daystate">daystate</a></td>
-    <td valign="top">NUMERIC</td>
-    <td valign="top"><a href="#tabel. "> </a></td>
-    <td>Kui 1, on riiklik tähtpäev. </td>
-</tr>
-<tr>
     <td valign="top"><a name="tabel.events.event">event</a></td>
     <td valign="top">TEXT</td>
     <td valign="top"><a href="#tabel. "> </a></td>
     <td>Tähtpäeva nimi. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.flags">flags</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"></td>
+    <td>Bitmap <a href="#bitmap.events.flags">events.flags</a></td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.events.id">id</a></td>
@@ -202,7 +190,7 @@ Tähtpäevad.<br/><br/>
     <td valign="top"><a name="tabel.events.maausk">maausk</a></td>
     <td valign="top">TEXT</td>
     <td valign="top"><a href="#tabel. "> </a></td>
-    <td>Kui pole NULL või pole tühi string, on tegemist maausu pühaga. </td>
+    <td>Kui pole NULL või pole tühi string, on tegemist maausu pühaga. Sisaldab püha nimetust.</td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.events.more">more</a></td>
@@ -215,12 +203,6 @@ Tähtpäevad.<br/><br/>
     <td valign="top">NUMERIC</td>
     <td valign="top"><a href="#tabel.runes.dbid">runes.dbid</a></td>
     <td>Ei pruugi igal kirjel olemas olla. </td>
-</tr>
-<tr>
-    <td valign="top"><a name="tabel.events.sol">sol</a></td>
-    <td valign="top">NUMERIC</td>
-    <td valign="top"><a href="#tabel. "> </a></td>
-    <td>Kui > 0, on tegu pööripäevaga. Väärtus näitab toimumise kuud. </td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.events.weekday">weekday</a></td>
@@ -341,8 +323,46 @@ Lingid mingile tähtpäevale.<br/><br/>
 </tr>
 </table>
 
+<h2><a name="bitmap">Bitmapid</a></h2>
+
+<h3><a name="bitmap.events.flags">Bitmap events.flags</a></h3>
+<table>
+<tr><th>Biti koht</th><th>Väärtus</th><th>Nimi</th><th>Tähendus</th></tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.events.flags.events.flags">0</a></td>
+    <td valign="top" align="right">1</td>
+    <td valign="top">daystate</td>
+    <td>Riiklik tähtpäev.</td>
+</tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.events.flags.events.flags">1</a></td>
+    <td valign="top" align="right">2</td>
+    <td valign="top">dayfree</td>
+    <td>Riigipüha ja puhkepäev.</td>
+</tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.events.flags.events.flags">2</a></td>
+    <td valign="top" align="right">4</td>
+    <td valign="top">dayflag</td>
+    <td>Lipu(heiskamis)päev.</td>
+</tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.events.flags.events.flags">3</a></td>
+    <td valign="top" align="right">8</td>
+    <td valign="top">sol</td>
+    <td>Selle päevale langeb (tihti) pööripäev.</td>
+</tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.events.flags.events.flags">4</a></td>
+    <td valign="top" align="right">16</td>
+    <td valign="top">shorterworkdayb4</td>
+    <td>Selle päevale eelneb lühendatud  tööpäev.</td>
+</tr>
+</table>
+
+
 <br/><br/>
-Viimati uuendatud 2012-08-18 18:32:59.
+Viimati uuendatud 2012-08-19 01:59:35.
 <br/><br/>
 <center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 

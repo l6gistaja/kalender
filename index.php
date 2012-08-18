@@ -112,7 +112,7 @@ echo $i18net['kuu'][$kuu-1] ." " .$aasta .(($ekr)?' e. Kr.':'');
 ?></th></tr>
 <tr>
 <td class="k_tn">nädal</td>
-<td class="k_tnp"><a href="ruunid.php#1">E</a></td>
+<td class="k_tnp">E</td>
 <td class="k_tnp">T</td>
 <td class="k_tnp">K</td>
 <td class="k_tnp">N</td>
@@ -142,6 +142,7 @@ for($kuup2ev=1;$kuup2ev<=$p2evi_kuus; $kuup2ev++, $i++)
 		$html_kuup2ev = $kuup2ev;
 		$lipup2ev = false;
 		$vabap2ev = false;
+        $lyhendet = false;
 		
 		// liikumatud
 		if( in_array($kuup, $liikumatud) ) {
@@ -149,6 +150,7 @@ for($kuup2ev=1;$kuup2ev<=$p2evi_kuus; $kuup2ev++, $i++)
 		  $html_kuup2ev = "<a href=\"tahtpaevad{$init_data['static_extension']}#$kuup\" title=\"{$calendardata['d'][$viit]['n']}\">$kuup2ev</a>";
 		  if($calendardata['d'][$viit]['l'] == 1) { $lipup2ev = true; }
 		  if($calendardata['d'][$viit]['f'] == 1) { $vabap2ev = true; }
+          if($calendardata['d'][$viit]['w'] == 1) { $lyhendet = true; }
 		}
 		
 		// liikuvad kirikupuhad
@@ -189,12 +191,16 @@ for($kuup2ev=1;$kuup2ev<=$p2evi_kuus; $kuup2ev++, $i++)
 		
 		
 		if($vabap2ev) { array_push($html_muud, 
-		  "<a href=\"#\" title=\"{$i18net['puhkep2ev']}\" class=\"k_lf\">*</a>"); }
+		  "<a href=\"#\" title=\"{$i18net['puhkep2ev']}"
+            .($lyhendet ? ' '.$i18net['lyhendet_tqqp2ev'] : '')
+            ."\" class=\"k_lf\">*</a>"); }
 
 		if($lipup2ev) { array_push($html_muud, 
 		  (count($html_muud)?'':'&nbsp;')
 		    ."<img style=\"lipp\" src=\"lp.gif\" title=\"{$i18net['lipup2ev']}\" alt=\"{$i18net['lipup2ev']}\"/>"); }
-		
+            
+		$html_muud = array_unique($html_muud);
+        
 		echo "<td class=\""
 		  . (($t2na==$kuup)?'k_t2na':'k_tp')
 		  . "\">"

@@ -12,6 +12,10 @@ $init_data = array(
 
 $init_data['static_extension'] = $init_data['dynamic'] ? '.php' : '.html';
 
+$init_bitmaps = array(
+    'events.flags' => array('daystate','dayfree','dayflag','sol','shorterworkdayb4')
+);
+
 $init_data['pages'] = array(
 
   array(
@@ -96,7 +100,8 @@ $i18net = array(
   
   'lipup2ev' => 'On lipu(heiskamis)päev.',
   'puhkep2ev' => 'On riigipüha ja puhkepäev.',
-  't2htp2ev' => 'On riiklik tähtpäev.'
+  't2htp2ev' => 'On riiklik tähtpäev.',
+  'lyhendet_tqqp2ev' => 'Eelnev tööpäev on lühendatud.'
   
 );
 
@@ -146,6 +151,21 @@ function compose_day_label($db_row, $delimiter = '; ') {
   $strm = $db_row['sol']> 0 ? '' : trim($db_row['maausk']);
   if($strm != '' && $strm != $str) { array_push($label_a, $strm); }
   return implode($delimiter, $label_a);
+}
+
+function bitmap2hash($bitmapkey,$bitmap) {
+    $y = array();
+    foreach($GLOBALS['init_bitmaps'][$bitmapkey] as $k => $v) {
+        $y[$v] = $bitmap % 2;
+        $bitmap = $bitmap >> 1;
+    }
+    return $y;
+}
+
+function eventflags($id,$bitmap) {
+    $y = bitmap2hash('events.flags',$bitmap);
+    $y['sol'] = $y['sol'] ? floor($id/100) : -1;
+    return $y;
 }
 
 #echo "<pre>";print_r($init_data);echo "</pre>";

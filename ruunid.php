@@ -64,12 +64,13 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
     if($row['dbid'] == 20) {
         $seasons = array('kevadine','suvine','sügisene','talvine');
         $a = array();
-        foreach ($dbh->query("SELECT * FROM events WHERE sol > 2 ORDER BY sol") as $rowe) {
+        foreach ($dbh->query("SELECT * FROM events WHERE flags & 8 > 0 ORDER BY id") as $rowe) {
             $a[] = '<a href="tahtpaevad'
                 .$init_data['static_extension']
                 .'#'.$rowe['id'].'">'
-                .$seasons[($rowe['sol']/3)-1]
+                .$seasons[(floor($rowe['id']/100)/3)-1]
                 .'</a>';
+
         }
         $solistices = ": ".implode(", ",$a)."<br/>\n";
     }

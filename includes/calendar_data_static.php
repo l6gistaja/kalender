@@ -130,6 +130,7 @@ $calendardata = array (
       'n' => 'Uue aasta päev',
       'f' => 1,
       'l' => 1,
+      'w' => 1,
     ),
     320 => 
     array (
@@ -185,6 +186,7 @@ $calendardata = array (
       'n' => 'Kevadine madisepäev. Eesti iseseisvuspäev (1918)',
       'f' => 1,
       'l' => 1,
+      'w' => 1,
     ),
     301 => 
     array (
@@ -268,6 +270,7 @@ $calendardata = array (
       'n' => 'Võidupüha; Leedopäev',
       'f' => 1,
       'l' => 1,
+      'w' => 1,
     ),
     624 => 
     array (
@@ -431,6 +434,7 @@ $calendardata = array (
     array (
       'n' => 'Jõulud. Jõululaupäev',
       'f' => 1,
+      'w' => 1,
     ),
     1225 => 
     array (
@@ -587,5 +591,5 @@ $calendardata = array (
       'n' => 'Liigpäev',
     ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2012-08-18 18:33:00',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2012-08-19 01:59:36',
 );

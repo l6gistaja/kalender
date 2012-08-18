@@ -61,7 +61,6 @@ for($i=0; $i<count($index); $i++) {
 }
 echo '</ol>'. "\n";
 
-
 $urlcategory0 = '';
 $paragraph = 0;
 
@@ -73,6 +72,8 @@ $sql = "SELECT e.*, u.urlcategory_id, u.url, u.res_type, c.urlcategory, c.urlpre
   ." ORDER BY e.id, c.urlcategory, u.url";
 
 foreach ($dbh->query($sql) as $row) {
+
+    $row = array_merge($row, eventflags($row['id'],$row['flags']));
       
     if($eid != $row['id']) {
 
@@ -172,6 +173,12 @@ foreach ($dbh->query($sql) as $row) {
             echo '<br /><strong>*</strong> '
 	      . $i18net['t2htp2ev']
 	      . "\n";
+        }
+        
+        if($row['shorterworkdayb4'] == '1') {
+            echo '<br /><strong>*</strong> '
+          . $i18net['lyhendet_tqqp2ev']
+          . "\n";
         }
         
         echo $weekday;

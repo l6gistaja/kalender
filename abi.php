@@ -17,7 +17,7 @@ $dbh = new PDO($init_data['dbc_descr']);
    <ol type="A">
     <li><a href="#mallid">Tähtpäevade mallid</a></li>
     <li><a href="#idd">Tähtpäevade ID-d</a></li>
-    <li><a href="#tabelid">Tabelid</a></li>
+    <li><a href="#tabelid">Tabelid</a>
         <ol>
 <?php 
 
@@ -30,19 +30,29 @@ foreach ($dbh->query("SELECT * FROM tables ORDER BY table_name") as $row) {
   $labels[$row['table_name']] = $row['description'];
 }
 
-echo '';
-
 ?>
         </ol>
-   </ol> 
-</li>
-</ol>
+     </li>
+     <li><a href="#bitmap">Bitmapid</a>
+        <ol>
 <?php 
 
 
-print_r($labels );
+$bitmaps = array();
+foreach ($dbh->query("select column_name from bitmaps group by column_name order by column_name") as $row) {
+  echo '<li>'
+  .'<a href="#bitmap.'.$row['column_name'].'">'.$row['column_name'].'<a>'
+  .'</li>'."\n";
+  $bitmaps[] = $row['column_name'];
+}
 
 ?>
+        </ol>
+     </li>
+   </ol> 
+</li>
+</ol>
+
 <h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
 
 <table>
@@ -182,13 +192,17 @@ foreach($tablenames as $tablename) {
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>'."\n";
 
-    foreach ($dbh->query("select * from tablecolumns where table_name='".$tablename."' order by column_name") as $row) {
+    foreach ($dbh->query("select * from tablecolumns where table_name='".$tablename."' and bitmap = 0 order by column_name") as $row) {
     
         $row['column_key'] = trim($row['column_key']);
         if($row['column_key'] == 'PK') {
             $row['column_key'] = 'Esmasvõti';
         } else if($row['column_key'] != '') {
             $row['column_key'] = '<a href="#tabel.'.$row['column_key'].'">'.$row['column_key'].'</a>';
+        }
+        
+        if($init_bitmaps[$tablename.'.'.$row['column_name']]) {
+            $row['description'] = 'Bitmap <a href="#bitmap.'.$tablename.'.'.$row['column_name'].'">'.$tablename.'.'.$row['column_name'].'</a>'.$row['description'];
         }
         
         echo '<tr>
@@ -204,6 +218,36 @@ foreach($tablenames as $tablename) {
 }
 
 ?>
+
+<h2><a name="bitmap">Bitmapid</a></h2>
+
+<?php 
+
+sort($bitmaps);
+
+foreach($bitmaps as $tablename) {
+
+    echo '<h3><a name="bitmap.'.$tablename.'">Bitmap '.$tablename.'</a></h3>
+<table>
+<tr><th>Biti koht</th><th>Väärtus</th><th>Nimi</th><th>Tähendus</th></tr>'."\n";
+
+    foreach ($dbh->query("select * from bitmaps where column_name='".$tablename."' order by position") as $row) {
+    
+        
+        echo '<tr>
+    <td valign="top" align="right"><a name="bitmap.'.$tablename.'.'.$row['column_name'].'">'.$row['position'].'</a></td>
+    <td valign="top" align="right">'.(1 << $row['position']).'</td>
+    <td valign="top">'.$row['label'].'</td>
+    <td>'.$row['description'].'</td>
+</tr>'."\n";
+    }
+    
+    echo '</table>'."\n";
+    
+}
+
+?>
+
 
 <br/><br/>
 Viimati uuendatud <?php echo date('Y-m-d H:i:s'); ?>.
