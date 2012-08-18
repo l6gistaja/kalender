@@ -7,7 +7,14 @@ include('includes/web_header.php');
 <div class="bodydiv">
 <center>
 <?php echo $html_navigation = html_navigation_bar(); ?>
-<br/><br/>
+</center>
+<h1><a name="sisukord">Sisukord</a></h1><ol>
+<li><a href="#0">Nädalapäevad</a></li>
+<li><a href="#10">Kuufaasid</a></li>
+<li><a href="#20">Pööripäevad</a></li>
+<li><a href="#114">Liikumatud tähtpäevad</a></li>
+<li><a href="#1993">Liikuvad tähtpäevad</a></li>
+</ol>
 <table class="r_t">
 <?php 
 
@@ -109,6 +116,8 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
   
  ?>
 </table>
+
+<center>
 <br/>
 TODO: Hetkel tegemata veel: taliharjapäev, sirgupäev, künnipäev, karjalaskepäev, hingepäev. munapüha.<br/><br/>
 <?php 

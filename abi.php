@@ -2,6 +2,7 @@
 
 include('includes/web_init.php'); 
 include('includes/web_header.php');
+$dbh = new PDO($init_data['dbc']);
 
 ?>
 
@@ -9,7 +10,34 @@ include('includes/web_header.php');
 
 <center><?php echo $html_navigation = html_navigation_bar(); ?></center>
 
-<h1><a name="greg">Tähtpäevade tähistused</a></h1>
+<h1><a name="sisukord">Sisukord</a></h1><ol>
+<li><a href="#t2histused">Tähtpäevade tähistused</a></li>
+<li><a href="#greg">Gregooriuse kalender</a></li>
+<li><a href="#ab">Andmebaas</a>
+   <ol type="A">
+    <li><a href="#mallid">Tähtpäevade mallid</a></li>
+    <li><a href="#idd">Tähtpäevade ID-d</a></li>
+    <li><a href="#tabelid">Tabelid</a></li>
+        <ol>
+<?php 
+
+
+
+foreach ($dbh->query("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name") as $row) {
+  echo '<li>'
+  .'<a href="#tabel.'.$row['name'].'">'.$row['name'].'<a>'
+  .'</li>'."\n";
+}
+
+echo '';
+
+?>
+        </ol>
+   </ol> 
+</li>
+</ol>
+
+<h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
 
 <table>
 <tr><th>Sümbol</th><th>T&auml;hendus</th></tr>
@@ -50,7 +78,7 @@ Samuti ei suuda siinkasutatud <a href="tahtpaevad<?php echo $init_data['static_e
 
 <h1><a name="ab">Andmebaas</a></h1>
 
-on umbes ~40 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
+on <?php echo (filesize('kalender.sdb')>>10) ?> kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
 
 Eeldusel et igal tähtpäeval on vähemalt 1 link tabelis urls, oleks lihtne päring kõigi andmete kättesaamiseks:
 <blockquote><pre>
@@ -59,176 +87,6 @@ FROM events e, urls u, urlcategories c
 WHERE e.id = u.event_id AND u.urlcategory_id = c.id 
 ORDER BY e.id, c.urlcategory, u.url
 </pre></blockquote>
-
-<h2><a name="tabel.events">Tabel events</a></h2>
-Tähtpäevad.<br/>
-<table>
-<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.events.id">id</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
-
-Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>.
-
-</td></tr>
-
-<tr><td valign="top">maausk</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Kui pole NULL või pole tühi string, on tegemist maausu pühaga.
-
-</td></tr>
-
-<tr><td valign="top">more</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Märkused ja täpsustused.
-
-</td></tr>
-
-<tr><td valign="top">dayflag</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on lipu(heiskamis)päev.
-
-</td></tr>
-
-<tr><td valign="top">dayfree</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on riigipüha ja puhkepäev.
-
-</td></tr>
-
-<tr><td valign="top">daystate</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on riiklik tähtpäev.
-
-</td></tr>
-
-<tr><td valign="top">event</td><td valign="top">TEXT</td><td valign="top">&nbsp;</td><td>
-
-Tähtpäeva nimi.
-
-</td></tr>
-
-<tr><td valign="top">sol</td><td valign="top">NUMERIC</td><td valign="top">&nbsp;</td><td>
-
-Kui > 0, on tegu pööripäevaga. Väärtus näitab toimumise kuud.
-
-</td></tr>
-
-<tr><td valign="top">rune_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le. Ei pruugi igal kirjel olemas olla.
-
-</td></tr>
-
-<tr><td valign="top">weekday</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Kui <a href="#mallid.n">0...6</a>, siis toimub mingil kindlal nädalapäeval ja viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le.
-
-</td></tr>
-
-</table>
-
-
-
-<h2><a name="tabel.urlcategories">Tabel urlcategories</a></h2>
-Saidid, millelt on teavet võetud.<br/>
-<table>
-<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.urlcategories.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
-
-<tr><td valign="top">urlcategory</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Lingirühma silt.
-
-</td></tr>
-
-<tr><td valign="top">site</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Saidi avaleht.
-
-</td></tr>
-
-<tr><td valign="top">urlprefix</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-URLi nn prefiks, mis lisatakse urls.url ette.
-
-</td></tr>
-
-</table>
-
-
-
-<h2><a name="tabel.urls">Tabel urls</a></h2>
-Lingid mingile tähtpäevale.<br/>
-<table>
-<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.urls.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
-
-<tr><td valign="top">event_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.events.id">events.id</a> -le.
-
-</td></tr>
-
-<tr><td valign="top">urlcategory_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.urlcategories.id">urlcategories.id</a> -le.
-
-</td></tr>
-
-<tr><td valign="top">url</td><td valign="top">TEXT</td><td>&nbsp;</td><td>URL internetti. Selle ette lisatakse urlcategories.urlprefix.</td></tr>
-
-<tr><td valign="top">res_type</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-A = audio<br/>
-V = video
-</td></tr>
-
-</table>
-
-<h2><a name="tabel.runes">Tabel runes</a></h2>
-<a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.
-<table>
-<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.runes.dbid">dbid</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
-
-Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>, välja arvatud <a href="ruunid<?php echo $init_data['static_extension']; ?>#0">nädalapäevad</a> (<a href="#mallid.n">0...6</a>), <a href="ruunid<?php echo $init_data['static_extension']; ?>#10">kuufaasid</a> (10...17) ja <a href="ruunid<?php echo $init_data['static_extension']; ?>#20">pööripäev</a> (20).
-
-</td></tr>
-
-<tr><td valign="top">name</td><td valign="top">TEXT</td><td></td><td>
- 
-Ruuni (toimumispäeva) nimi.
-
-</td></tr>
-
-<tr><td valign="top">filename</td><td valign="top">TEXT</td><td></td><td>
-
-Ruunigraafikat sisaldava SVG faili nimi.
-
-</td></tr>
-
-<tr><td valign="top">width</td><td valign="top">NUMERIC</td><td></td><td>
-
-Ruuni laius pikslites.
-
-</td></tr>
-
-<tr><td valign="top">cx</td><td valign="top">NUMERIC</td><td></td><td>
-
-Ruuni jala kaugus pikslites ruuni vasakust servast.
-
-</td></tr>
-
-</table>
-
-
-
-
-
-
-
 
 <h1><a name="mallid">Tähtpäevade mallid</a></h1>
 
@@ -301,6 +159,182 @@ KK-nda kuu N-da nädala n-is nädalapäev. Vt. <a href="http://www.gnu.org/s/hel
 </td></tr>
 
 </table>
+
+
+<h2><a name="tabelid">Tabelid</a></h2>
+
+<h3><a name="tabel.events">events</a></h3>
+Tähtpäevad.<br/>
+<table>
+<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
+
+<tr><td valign="top"><a name="tabel.events.id">id</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
+
+Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>.
+
+</td></tr>
+
+<tr><td valign="top">maausk</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+
+Kui pole NULL või pole tühi string, on tegemist maausu pühaga.
+
+</td></tr>
+
+<tr><td valign="top">more</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+
+Märkused ja täpsustused.
+
+</td></tr>
+
+<tr><td valign="top">dayflag</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
+
+Kui 1, on lipu(heiskamis)päev.
+
+</td></tr>
+
+<tr><td valign="top">dayfree</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
+
+Kui 1, on riigipüha ja puhkepäev.
+
+</td></tr>
+
+<tr><td valign="top">daystate</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
+
+Kui 1, on riiklik tähtpäev.
+
+</td></tr>
+
+<tr><td valign="top">event</td><td valign="top">TEXT</td><td valign="top">&nbsp;</td><td>
+
+Tähtpäeva nimi.
+
+</td></tr>
+
+<tr><td valign="top">sol</td><td valign="top">NUMERIC</td><td valign="top">&nbsp;</td><td>
+
+Kui > 0, on tegu pööripäevaga. Väärtus näitab toimumise kuud.
+
+</td></tr>
+
+<tr><td valign="top">rune_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
+
+Viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le. Ei pruugi igal kirjel olemas olla.
+
+</td></tr>
+
+<tr><td valign="top">weekday</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
+
+Kui <a href="#mallid.n">0...6</a>, siis toimub mingil kindlal nädalapäeval ja viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le.
+
+</td></tr>
+
+</table>
+
+
+
+<h3><a name="tabel.urlcategories">urlcategories</a></h3>
+Saidid, millelt on teavet võetud.<br/>
+<table>
+<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
+
+<tr><td valign="top"><a name="tabel.urlcategories.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
+
+<tr><td valign="top">urlcategory</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+
+Lingirühma silt.
+
+</td></tr>
+
+<tr><td valign="top">site</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+
+Saidi avaleht.
+
+</td></tr>
+
+<tr><td valign="top">urlprefix</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+
+URLi nn prefiks, mis lisatakse urls.url ette.
+
+</td></tr>
+
+<tr><td valign="top">http_status</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
+HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav.
+</td></tr>
+
+</table>
+
+
+
+<h3><a name="tabel.urls">urls</a></h3>
+Lingid mingile tähtpäevale.<br/>
+<table>
+<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
+
+<tr><td valign="top"><a name="tabel.urls.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
+
+<tr><td valign="top">event_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
+
+Viitab <a href="#tabel.events.id">events.id</a> -le.
+
+</td></tr>
+
+<tr><td valign="top">urlcategory_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
+
+Viitab <a href="#tabel.urlcategories.id">urlcategories.id</a> -le.
+
+</td></tr>
+
+<tr><td valign="top">url</td><td valign="top">TEXT</td><td>&nbsp;</td><td>URL internetti. Selle ette lisatakse urlcategories.urlprefix.</td></tr>
+
+<tr><td valign="top">res_type</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
+A = audio<br/>
+V = video
+</td></tr>
+
+<tr><td valign="top">http_status</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
+HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav.
+</td></tr>
+
+</table>
+
+<h3><a name="tabel.runes">runes</a></h3>
+<a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.
+<table>
+<tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
+
+<tr><td valign="top"><a name="tabel.runes.dbid">dbid</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
+
+Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>, välja arvatud <a href="ruunid<?php echo $init_data['static_extension']; ?>#0">nädalapäevad</a> (<a href="#mallid.n">0...6</a>), <a href="ruunid<?php echo $init_data['static_extension']; ?>#10">kuufaasid</a> (10...17) ja <a href="ruunid<?php echo $init_data['static_extension']; ?>#20">pööripäev</a> (20).
+
+</td></tr>
+
+<tr><td valign="top">name</td><td valign="top">TEXT</td><td></td><td>
+ 
+Ruuni (toimumispäeva) nimi.
+
+</td></tr>
+
+<tr><td valign="top">filename</td><td valign="top">TEXT</td><td></td><td>
+
+Ruunigraafikat sisaldava SVG faili nimi.
+
+</td></tr>
+
+<tr><td valign="top">width</td><td valign="top">NUMERIC</td><td></td><td>
+
+Ruuni laius pikslites.
+
+</td></tr>
+
+<tr><td valign="top">cx</td><td valign="top">NUMERIC</td><td></td><td>
+
+Ruuni jala kaugus pikslites ruuni vasakust servast.
+
+</td></tr>
+
+</table>
+
+
 
 <br/><br/>
 Viimati uuendatud <?php echo date('Y-m-d H:i:s'); ?>.

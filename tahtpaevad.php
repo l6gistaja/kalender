@@ -65,11 +65,14 @@ echo '</ol>'. "\n";
 $urlcategory0 = '';
 $paragraph = 0;
 
-foreach ($dbh->query(
-  "SELECT e.*, u.urlcategory_id, u.url, u.res_type, c.urlcategory, c.urlprefix FROM events e, urls u, urlcategories c WHERE e.id = u.event_id AND u.urlcategory_id = c.id"
+$sql = "SELECT e.*, u.urlcategory_id, u.url, u.res_type, c.urlcategory, c.urlprefix"
+  ." FROM events e, urls u, urlcategories c"
+  ." WHERE e.id = u.event_id AND u.urlcategory_id = c.id"
   //." AND e.maausk IS NOT NULL AND e.maausk <> ''" //maausu filter
-  ." ORDER BY e.id, c.urlcategory, u.url"
-) as $row) {
+  ." AND c.http_status = 200 AND u.http_status = 200 " //surnd linkide filter
+  ." ORDER BY e.id, c.urlcategory, u.url";
+
+foreach ($dbh->query($sql) as $row) {
       
     if($eid != $row['id']) {
 
@@ -220,7 +223,9 @@ echo str_replace('{abid}',$eid,$mall_abid);
 echo '<br/><br/><br/><h1><a name="allikad">Peamised allikad ja viited</a></h1><ol>'."\n";
 
 foreach ($dbh->query(
-  "SELECT c.urlcategory, c.site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id GROUP BY c.id ORDER BY c.urlcategory"
+  "SELECT c.urlcategory, c.site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id"
+  ." AND c.http_status = 200" //surnud linkide filter
+  ." GROUP BY c.id ORDER BY c.urlcategory"
 ) as $src) {
   echo '<li>'.$src['c.urlcategory'].' ('.$src['ucc'].')'
   .( $src['c.id'] != '0' ? ':   <a href="'.$src['c.site'].'">'.$src['c.site'].'</a>' : '')

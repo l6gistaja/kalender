@@ -112,7 +112,7 @@ echo $i18net['kuu'][$kuu-1] ." " .$aasta .(($ekr)?' e. Kr.':'');
 ?></th></tr>
 <tr>
 <td class="k_tn">nädal</td>
-<td class="k_tnp">E</td>
+<td class="k_tnp"><a href="ruunid.php#1">E</a></td>
 <td class="k_tnp">T</td>
 <td class="k_tnp">K</td>
 <td class="k_tnp">N</td>
