@@ -30,7 +30,13 @@
    </ol> 
 </li>
 </ol>
-
+Array
+(
+    [events] => Tähtpäevad.
+    [runes] => <a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.
+    [urlcategories] => Saidid, millelt on teavet võetud.
+    [urls] => Lingid mingile tähtpäevale.
+)
 <h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
 
 <table>
@@ -82,6 +88,7 @@ WHERE e.id = u.event_id AND u.urlcategory_id = c.id
 ORDER BY e.id, c.urlcategory, u.url
 </pre></blockquote>
 
+Andmebaasi struktuuri kirjeldus on saadaval 6 kB andmebaasifailina <a href="descriptions.sdb">descriptions.sdb</a>.
 <h1><a name="mallid">Tähtpäevade mallid</a></h1>
 
 <table>
@@ -157,181 +164,185 @@ KK-nda kuu N-da nädala n-is nädalapäev. Vt. <a href="http://www.gnu.org/s/hel
 
 <h2><a name="tabelid">Tabelid</a></h2>
 
-<h3><a name="tabel.events">events</a></h3>
-Tähtpäevad.<br/>
+<h3><a name="tabel.events">Tabel events</a></h3>
+Tähtpäevad.<br/><br/>
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.events.id">id</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
-
-Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>.
-
-</td></tr>
-
-<tr><td valign="top">maausk</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Kui pole NULL või pole tühi string, on tegemist maausu pühaga.
-
-</td></tr>
-
-<tr><td valign="top">more</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Märkused ja täpsustused.
-
-</td></tr>
-
-<tr><td valign="top">dayflag</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on lipu(heiskamis)päev.
-
-</td></tr>
-
-<tr><td valign="top">dayfree</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on riigipüha ja puhkepäev.
-
-</td></tr>
-
-<tr><td valign="top">daystate</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-
-Kui 1, on riiklik tähtpäev.
-
-</td></tr>
-
-<tr><td valign="top">event</td><td valign="top">TEXT</td><td valign="top">&nbsp;</td><td>
-
-Tähtpäeva nimi.
-
-</td></tr>
-
-<tr><td valign="top">sol</td><td valign="top">NUMERIC</td><td valign="top">&nbsp;</td><td>
-
-Kui > 0, on tegu pööripäevaga. Väärtus näitab toimumise kuud.
-
-</td></tr>
-
-<tr><td valign="top">rune_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le. Ei pruugi igal kirjel olemas olla.
-
-</td></tr>
-
-<tr><td valign="top">weekday</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Kui <a href="#mallid.n">0...6</a>, siis toimub mingil kindlal nädalapäeval ja viitab <a href="#tabel.runes.dbid">runes.dbid</a> -le.
-
-</td></tr>
-
+<tr>
+    <td valign="top"><a name="tabel.events.dayflag">dayflag</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Kui 1, on lipu(heiskamis)päev. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.dayfree">dayfree</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Kui 1, on riigipüha ja puhkepäev. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.daystate">daystate</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Kui 1, on riiklik tähtpäev. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.event">event</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Tähtpäeva nimi. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.id">id</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top">Esmasvõti</td>
+    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>.  </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.maausk">maausk</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Kui pole NULL või pole tühi string, on tegemist maausu pühaga. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.more">more</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Märkused ja täpsustused. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.rune_id">rune_id</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel.runes.dbid">runes.dbid</a></td>
+    <td>Ei pruugi igal kirjel olemas olla. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.sol">sol</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Kui > 0, on tegu pööripäevaga. Väärtus näitab toimumise kuud. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.events.weekday">weekday</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel.runes.dbid">runes.dbid</a></td>
+    <td>Kui <a href="#mallid.n">0...6</a>, siis toimub mingil kindlal nädalapäeval. </td>
+</tr>
 </table>
-
-
-
-<h3><a name="tabel.urlcategories">urlcategories</a></h3>
-Saidid, millelt on teavet võetud.<br/>
+<h3><a name="tabel.runes">Tabel runes</a></h3>
+<a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.<br/><br/>
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.urlcategories.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
-
-<tr><td valign="top">urlcategory</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Lingirühma silt.
-
-</td></tr>
-
-<tr><td valign="top">site</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-Saidi avaleht.
-
-</td></tr>
-
-<tr><td valign="top">urlprefix</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-
-URLi nn prefiks, mis lisatakse urls.url ette.
-
-</td></tr>
-
-<tr><td valign="top">http_status</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav.
-</td></tr>
-
+<tr>
+    <td valign="top"><a name="tabel.runes.cx">cx</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"></td>
+    <td>Ruuni jala kaugus pikslites ruuni vasakust servast. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.runes.dbid">dbid</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top">Esmasvõti</td>
+    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>, välja arvatud <a href="ruunid.html#0">nädalapäevad</a> (<a href="#mallid.n">0...6</a>), <a href="ruunid.html#10">kuufaasid</a> (10...17) ja <a href="ruunid.html#20">pööripäev</a> (20).</td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.runes.filename">filename</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"></td>
+    <td>Ruunigraafikat sisaldava SVG faili nimi. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.runes.name">name</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"></td>
+    <td>Ruuni (toimumispäeva) nimi. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.runes.width">width</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"></td>
+    <td>Ruuni laius pikslites. </td>
+</tr>
 </table>
-
-
-
-<h3><a name="tabel.urls">urls</a></h3>
-Lingid mingile tähtpäevale.<br/>
+<h3><a name="tabel.urlcategories">Tabel urlcategories</a></h3>
+Saidid, millelt on teavet võetud.<br/><br/>
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.urls.id">id</a></td><td valign="top">INTEGER PRIMARY KEY</td><td valign="top">Esmasvõti</td><td>&nbsp;</td></tr>
-
-<tr><td valign="top">event_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.events.id">events.id</a> -le.
-
-</td></tr>
-
-<tr><td valign="top">urlcategory_id</td><td valign="top">NUMERIC</td><td valign="top">Välisvõti</td><td>
-
-Viitab <a href="#tabel.urlcategories.id">urlcategories.id</a> -le.
-
-</td></tr>
-
-<tr><td valign="top">url</td><td valign="top">TEXT</td><td>&nbsp;</td><td>URL internetti. Selle ette lisatakse urlcategories.urlprefix.</td></tr>
-
-<tr><td valign="top">res_type</td><td valign="top">TEXT</td><td>&nbsp;</td><td>
-A = audio<br/>
-V = video
-</td></tr>
-
-<tr><td valign="top">http_status</td><td valign="top">NUMERIC</td><td>&nbsp;</td><td>
-HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav.
-</td></tr>
-
+<tr>
+    <td valign="top"><a name="tabel.urlcategories.http_status">http_status</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urlcategories.id">id</a></td>
+    <td valign="top">INTEGER PRIMARY KEY</td>
+    <td valign="top">Esmasvõti</td>
+    <td> </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urlcategories.site">site</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Saidi avaleht. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urlcategories.urlcategory">urlcategory</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>Lingirühma silt. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urlcategories.urlprefix">urlprefix</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>URLi nn prefiks, mis lisatakse urls.url ette. </td>
+</tr>
 </table>
-
-<h3><a name="tabel.runes">runes</a></h3>
-<a href="http://maavald.ee/maausk.html?rubriik=21&id=67&op=lugu">Maavalla Koja sirvikalendri ruunid</a> SVG failide kujul.
+<h3><a name="tabel.urls">Tabel urls</a></h3>
+Lingid mingile tähtpäevale.<br/><br/>
 <table>
 <tr><th>Veeru nimi</th><th>Veeru tüüp</th><th>Võti</th><th>Tähendus</th></tr>
-
-<tr><td valign="top"><a name="tabel.runes.dbid">dbid</a></td><td valign="top">NUMERIC</td><td valign="top">Esmasvõti</td><td>
-
-Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>, välja arvatud <a href="ruunid.html#0">nädalapäevad</a> (<a href="#mallid.n">0...6</a>), <a href="ruunid.html#10">kuufaasid</a> (10...17) ja <a href="ruunid.html#20">pööripäev</a> (20).
-
-</td></tr>
-
-<tr><td valign="top">name</td><td valign="top">TEXT</td><td></td><td>
- 
-Ruuni (toimumispäeva) nimi.
-
-</td></tr>
-
-<tr><td valign="top">filename</td><td valign="top">TEXT</td><td></td><td>
-
-Ruunigraafikat sisaldava SVG faili nimi.
-
-</td></tr>
-
-<tr><td valign="top">width</td><td valign="top">NUMERIC</td><td></td><td>
-
-Ruuni laius pikslites.
-
-</td></tr>
-
-<tr><td valign="top">cx</td><td valign="top">NUMERIC</td><td></td><td>
-
-Ruuni jala kaugus pikslites ruuni vasakust servast.
-
-</td></tr>
-
+<tr>
+    <td valign="top"><a name="tabel.urls.event_id">event_id</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel.events.id">events.id</a></td>
+    <td></td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urls.http_status">http_status</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>HTTP olekukoodid, nagu kirjeldet RFC 2616 poolt. Kõik mis pole 200, pole enam kättesaadav. </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urls.id">id</a></td>
+    <td valign="top">INTEGER PRIMARY KEY</td>
+    <td valign="top">Esmasvõti</td>
+    <td> </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urls.res_type">res_type</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>A = audio; V = video </td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urls.url">url</a></td>
+    <td valign="top">TEXT</td>
+    <td valign="top"><a href="#tabel. "> </a></td>
+    <td>URL internetti. Selle ette lisatakse urlcategories.urlprefix.</td>
+</tr>
+<tr>
+    <td valign="top"><a name="tabel.urls.urlcategory_id">urlcategory_id</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"><a href="#tabel.urlcategories.id">urlcategories.id</a></td>
+    <td></td>
+</tr>
 </table>
-
-
 
 <br/><br/>
-Viimati uuendatud 2012-08-18 11:11:47.
+Viimati uuendatud 2012-08-18 18:32:59.
 <br/><br/>
 <center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 

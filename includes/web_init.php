@@ -4,7 +4,8 @@
 
 $init_data = array(
   'dynamic' => false, // true, if under devel
-  'dbc' => 'sqlite:kalender.sdb'
+  'dbc' => 'sqlite:kalender.sdb',
+  'dbc_descr' => 'sqlite:descriptions.sdb'
 );
 
 // BUILDING OTHER CONF // BUILDING OTHER CONF // BUILDING OTHER CONF // BUILDING OTHER CONF 
