@@ -18,7 +18,7 @@ $op_aasta=($ekr)?1-$aasta:$aasta;
 <center>
 <?php echo $html_navigation = html_navigation_bar(); ?>
 <br/><br/>
-<form method="get" action="index.php"><input type="submit" value="Kuva">&nbsp;&nbsp;
+<form method="get" action="index.php"><input type="submit" value="Kuva">&nbsp;&nbsp; 
 <?php 
 
 echo "<a href=\""
