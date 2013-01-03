@@ -7,7 +7,7 @@ if($pgname == 'calendar_data.php') { $standalone = true; }
 
 $calendardata = array('k' => array(), 'y' => array(), 'a' => array(), 'l' => array());
 $dbh = new PDO($init_data['dbc']); 
-foreach ($dbh->query("SELECT maausk, event, id, flags FROM events") as $row) {
+foreach ($dbh->query("SELECT maausk, event, id, flags FROM events WHERE id > 100") as $row) {
   
   $row = array_merge($row, eventflags($row['id'],$row['flags']));
   

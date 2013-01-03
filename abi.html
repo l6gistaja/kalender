@@ -19,7 +19,7 @@
 <li><a href="#ab">Andmebaas</a>
    <ol type="A">
     <li><a href="#mallid">Tähtpäevade mallid</a></li>
-    <li><a href="#idd">Tähtpäevade ID-d</a></li>
+    <li><a href="#idd">Sündmuste ID-d</a></li>
     <li><a href="#tabelid">Tabelid</a>
         <ol>
 <li><a href="#tabel.events">events<a></li>
@@ -35,6 +35,7 @@
      </li>
    </ol> 
 </li>
+<li><a href="#repo">GitHub</a></li>
 </ol>
 
 <h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
@@ -130,32 +131,62 @@ Nädala number aasta sees, 01...53.
 
 
 
-<h1><a name="idd">Tähtpäevade ID-d</a></h1>
+<h1><a name="idd">Sündmuste ID-d</a></h1>
 
 <table>
 <tr><th>Mall või =valem</th><th>Min</th><th>Max</th><th>Tüüp</th><th>Tähendus</th></tr>
 
+<tr><td valign="top">n</td><td valign="top">0</td><td valign="top">6</td><td valign="top">Nädalapäev</td><td valign="top">
+
+<a href="ruunid.html#0">Nädalapäevad</a>.
+
+</td></tr>
+
+<tr><td valign="top"> </td><td valign="top">10</td><td valign="top">17</td><td valign="top">Astronoomiline</td><td valign="top">
+
+<a href="ruunid.html#10">Kuufaasid</a>.
+
+</td></tr>
+
+<tr><td valign="top">= 20 + ( KK / 3 )</td><td valign="top">20</td><td valign="top">24</td><td valign="top">Astronoomiline</td><td valign="top">
+
+<a href="tahtpaevad.html#pqqrip2evad">Pööripäevad</a>.
+
+</td></tr>
+
+<tr><td valign="top">= 30</td><td valign="top">30</td><td valign="top">30</td><td valign="top">Astronoomiline</td><td valign="top">
+
+Päiksetõus.
+
+</td></tr>
+
+<tr><td valign="top">= 31</td><td valign="top">31</td><td valign="top">31</td><td valign="top">Astronoomiline</td><td valign="top">
+
+Päikseloojang.
+
+</td></tr>
+
 <tr><td valign="top">KKPP</td><td valign="top">101</td><td valign="top">1231</td><td valign="top">Liikumatu</td><td valign="top">
 
-Kindlal kalendripäeval olev tähtpäev.
+<a href="tahtpaevad.html#q1">Kindlal kalendripäeval olev tähtpäev</a>.
 
 </td></tr>
 
 <tr><td valign="top">= 2000 + x</td><td valign="top">1635</td><td valign="top">2365</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-x päeva 1. ülestõusmispühast.
+<a href="tahtpaevad.html#munapyhad">Munapühad</a>: x päeva 1. ülestõusmispühast.
 
 </td></tr>
 
 <tr><td valign="top">3VVn</td><td valign="top">3010</td><td valign="top">3536</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
+<a href="tahtpaevad.html#advent">Advent</a>: VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
 
 </td></tr>
 
 <tr><td valign="top">1KKNn</td><td valign="top">10110</td><td valign="top">11256</td><td valign="top">Liikuv</td><td valign="top">
 
-KK-nda kuu N-da nädala n-is nädalapäev. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
+<a href="tahtpaevad.html#liikuvad">KK-nda kuu N-da nädala n-is nädalapäev</a>. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
 
 </td></tr>
 
@@ -184,7 +215,7 @@ Tähtpäevad.<br/><br/>
     <td valign="top"><a name="tabel.events.id">id</a></td>
     <td valign="top">NUMERIC</td>
     <td valign="top">Esmasvõti</td>
-    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>.  </td>
+    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste sündmuste ID-dena</a>.  </td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.events.maausk">maausk</a></td>
@@ -225,19 +256,13 @@ Tähtpäevad.<br/><br/>
     <td valign="top"><a name="tabel.runes.dbid">dbid</a></td>
     <td valign="top">NUMERIC</td>
     <td valign="top">Esmasvõti</td>
-    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste tähtpäeva ID-dena</a>, välja arvatud <a href="ruunid.html#0">nädalapäevad</a> (<a href="#mallid.n">0...6</a>), <a href="ruunid.html#10">kuufaasid</a> (10...17) ja <a href="ruunid.html#20">pööripäev</a> (20).</td>
+    <td>Kodeeritud <a href="#mallid">mallide</a> abil <a href="#idd">kindlakujuliste sündmuste ID-dena</a>.</td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.runes.filename">filename</a></td>
     <td valign="top">TEXT</td>
     <td valign="top"></td>
     <td>Ruunigraafikat sisaldava SVG faili nimi. </td>
-</tr>
-<tr>
-    <td valign="top"><a name="tabel.runes.name">name</a></td>
-    <td valign="top">TEXT</td>
-    <td valign="top"></td>
-    <td>Ruuni (toimumispäeva) nimi. </td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.runes.width">width</a></td>
@@ -360,9 +385,12 @@ Lingid mingile tähtpäevale.<br/><br/>
 </tr>
 </table>
 
+<h1><a name="repo">GitHub</a></h1>
+
+<a href="https://github.com/l6gistaja/kalender">https://github.com/l6gistaja/kalender</a>
 
 <br/><br/>
-Viimati uuendatud 2012-08-19 01:59:35.
+Viimati uuendatud 2013-01-03 20:42:11.
 <br/><br/>
 <center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 

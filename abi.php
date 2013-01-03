@@ -16,7 +16,7 @@ $dbh = new PDO($init_data['dbc_descr']);
 <li><a href="#ab">Andmebaas</a>
    <ol type="A">
     <li><a href="#mallid">Tähtpäevade mallid</a></li>
-    <li><a href="#idd">Tähtpäevade ID-d</a></li>
+    <li><a href="#idd">Sündmuste ID-d</a></li>
     <li><a href="#tabelid">Tabelid</a>
         <ol>
 <?php 
@@ -51,6 +51,7 @@ foreach ($dbh->query("select column_name from bitmaps group by column_name order
      </li>
    </ol> 
 </li>
+<li><a href="#repo">GitHub</a></li>
 </ol>
 
 <h1><a name="t2histused">Tähtpäevade tähistused</a></h1>
@@ -146,32 +147,62 @@ Nädala number aasta sees, 01...53.
 
 
 
-<h1><a name="idd">Tähtpäevade ID-d</a></h1>
+<h1><a name="idd">Sündmuste ID-d</a></h1>
 
 <table>
 <tr><th>Mall või =valem</th><th>Min</th><th>Max</th><th>Tüüp</th><th>Tähendus</th></tr>
 
+<tr><td valign="top">n</td><td valign="top">0</td><td valign="top">6</td><td valign="top">Nädalapäev</td><td valign="top">
+
+<a href="ruunid<?php echo $init_data['static_extension']; ?>#0">Nädalapäevad</a>.
+
+</td></tr>
+
+<tr><td valign="top"> </td><td valign="top">10</td><td valign="top">17</td><td valign="top">Astronoomiline</td><td valign="top">
+
+<a href="ruunid<?php echo $init_data['static_extension']; ?>#10">Kuufaasid</a>.
+
+</td></tr>
+
+<tr><td valign="top">= 20 + ( KK / 3 )</td><td valign="top">20</td><td valign="top">24</td><td valign="top">Astronoomiline</td><td valign="top">
+
+<a href="tahtpaevad<?php echo $init_data['static_extension']; ?>#pqqrip2evad">Pööripäevad</a>.
+
+</td></tr>
+
+<tr><td valign="top">= 30</td><td valign="top">30</td><td valign="top">30</td><td valign="top">Astronoomiline</td><td valign="top">
+
+Päiksetõus.
+
+</td></tr>
+
+<tr><td valign="top">= 31</td><td valign="top">31</td><td valign="top">31</td><td valign="top">Astronoomiline</td><td valign="top">
+
+Päikseloojang.
+
+</td></tr>
+
 <tr><td valign="top">KKPP</td><td valign="top">101</td><td valign="top">1231</td><td valign="top">Liikumatu</td><td valign="top">
 
-Kindlal kalendripäeval olev tähtpäev.
+<a href="tahtpaevad<?php echo $init_data['static_extension']; ?>#q1">Kindlal kalendripäeval olev tähtpäev</a>.
 
 </td></tr>
 
 <tr><td valign="top">= 2000 + x</td><td valign="top">1635</td><td valign="top">2365</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-x päeva 1. ülestõusmispühast.
+<a href="tahtpaevad<?php echo $init_data['static_extension']; ?>#munapyhad">Munapühad</a>: x päeva 1. ülestõusmispühast.
 
 </td></tr>
 
 <tr><td valign="top">3VVn</td><td valign="top">3010</td><td valign="top">3536</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
+<a href="tahtpaevad<?php echo $init_data['static_extension']; ?>#advent">Advent</a>: VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
 
 </td></tr>
 
 <tr><td valign="top">1KKNn</td><td valign="top">10110</td><td valign="top">11256</td><td valign="top">Liikuv</td><td valign="top">
 
-KK-nda kuu N-da nädala n-is nädalapäev. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
+<a href="tahtpaevad<?php echo $init_data['static_extension']; ?>#liikuvad">KK-nda kuu N-da nädala n-is nädalapäev</a>. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
 
 </td></tr>
 
@@ -248,6 +279,9 @@ foreach($bitmaps as $tablename) {
 
 ?>
 
+<h1><a name="repo">GitHub</a></h1>
+
+<a href="https://github.com/l6gistaja/kalender">https://github.com/l6gistaja/kalender</a>
 
 <br/><br/>
 Viimati uuendatud <?php echo date('Y-m-d H:i:s'); ?>.

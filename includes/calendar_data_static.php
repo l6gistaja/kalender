@@ -85,12 +85,10 @@ $calendardata = array (
     77 => 922,
     78 => 103,
     79 => 1207,
-    80 => 320,
-    81 => 621,
-    82 => 102,
-    83 => 1124,
-    84 => 206,
-    85 => 229,
+    80 => 102,
+    81 => 1124,
+    82 => 206,
+    83 => 229,
   ),
   'y' => 
   array (
@@ -591,5 +589,5 @@ $calendardata = array (
       'n' => 'Liigpäev',
     ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2012-08-19 01:59:36',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-01-03 20:42:11',
 );
