@@ -48,6 +48,12 @@ for($i=11; $i>-1; $i--) {
     );
 }
 
+array_unshift($index, array(
+      'min' => 20,
+      'i8n' => 'Pööripäevad',
+      'a' => 'pqqrip2evad'
+));
+
 //PHP5 & SQLite3 style data access
 $dbh = new PDO($init_data['dbc']); 
 
@@ -81,23 +87,23 @@ foreach ($dbh->query($sql) as $row) {
             echo str_replace('{abid}',$eid,$mall_abid);
             echo '</div>' . "\n";
             $urlcategory0 =  '';
-            
-            $runelink = '';
-            if($row['rune_id']) {
-                $sql = "SELECT r.* FROM runes r WHERE r.dbid=".$row['rune_id'];
-                foreach($dbh->query($sql) as $rune) {
-					/*
-                    $runeurl = 'r.php?f='.$rune['filename']
-                        .'&w='.$rune['width']
-                        .'&n='.$row['maausk'];
-					*/
-					$runeurl = 'svg/'.$rune['filename'];
-                    $runelink = '<a target="_blank" href="'.$runeurl.'" onClick="return r(\''.$row['maausk'].'\','.$rune['width'].',\''.$rune['filename'].'\');" title="Vaata sirvikalendri ruuni">';
-                    break;
-                }
-            }
         }
-      
+		
+		$runelink = '';
+		if($row['rune_id']) {
+			$sql = "SELECT r.* FROM runes r WHERE r.dbid=".$row['rune_id'];
+			foreach($dbh->query($sql) as $rune) {
+				/*
+				$runeurl = 'r.php?f='.$rune['filename']
+					.'&w='.$rune['width']
+					.'&n='.$row['maausk'];
+				*/
+				$runeurl = 'svg/'.$rune['filename'];
+				$runelink = '<a target="_blank" href="'.$runeurl.'" onClick="return r(\''.$row['maausk'].'\','.$rune['width'].',\''.$rune['filename'].'\');" title="Vaata sirvikalendri ruuni">';
+				break;
+			}
+		} 
+		
 	if($index[$paragraph]['a_el'] == $row['id']) {
 	  echo '<br/><br/><h1><a name="'.$index[$paragraph]['a'].'">'.$index[$paragraph]['i8n'].'</a></h1>'. "\n";
 	  $paragraph ++;
@@ -108,7 +114,8 @@ foreach ($dbh->query($sql) as $row) {
     
 	// leia päeva toimumise kirjeldus ID j2rgi
 	
-	if($row['id'] < 1232) {	$event_time = 
+	if($row['id'] < 25) {	$event_time = ''; } 
+	else if($row['id'] < 1232) {	$event_time = 
 	
 	    ($row['id'] % 100) 
 	    . '.' . floor($row['id'] / 100); } 
@@ -150,7 +157,8 @@ foreach ($dbh->query($sql) as $row) {
         echo  "\n" . "\n" . '<br /><br /><strong><a name="' .
             $row['id'] . '">' .
             $event_time .
-            '</a>: ' .
+            '</a>'.
+			($event_time == '' ? '' : ': ' ).
              ( trim($row['event']) != '' ? $row['event'] : $row['maausk'] ) .
             '</strong><div class="day">' . "\n";
 
@@ -217,7 +225,8 @@ foreach ($dbh->query($sql) as $row) {
         
         
     $linkno ++;
-    
+	
+	//print_r($row);    
 }
 
 # viimane ID

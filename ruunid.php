@@ -7,7 +7,9 @@ include('includes/web_header.php');
 <div class="bodydiv">
 <center>
 <?php echo $html_navigation = html_navigation_bar(); ?>
-</center>
+
+<table class="r_t" width="65%">
+<tr><td valign="top" class="r_c" colspan="2">
 <h1><a name="sisukord">Sisukord</a></h1><ol>
 <li><a href="#0">Nädalapäevad</a></li>
 <li><a href="#10">Kuufaasid</a></li>
@@ -15,16 +17,16 @@ include('includes/web_header.php');
 <li><a href="#114">Liikumatud tähtpäevad</a></li>
 <li><a href="#1993">Liikuvad tähtpäevad</a></li>
 </ol>
-<table class="r_t" width="65%">
+</td></tr>
 <?php 
 
 $dbh = new PDO($init_data['dbc']);
 
 $runelabels = array();
-foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid < 21") as $row)
-{ $runelabels['i'.$row['dbid']] = array('l'=>$row['name']); }
+foreach ($dbh->query("SELECT r.*, e.event FROM runes r, events e WHERE r.dbid > -1 AND r.dbid < 21 AND r.dbid = e.id ORDER BY r.dbid") as $row)
+{ $runelabels['i'.$row['dbid']] = array('l'=>$row['event']); }
 
-foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
+foreach ($dbh->query("SELECT r.*, e.event, e.maausk, e.more FROM runes r, events e WHERE r.dbid > -1 AND r.dbid = e.id ORDER BY r.dbid") as $row) {
 
     //double runes
     $doublerunes = '';
@@ -64,6 +66,7 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
     if($row['dbid'] == 20) {
         $seasons = array('kevadine','suvine','sügisene','talvine');
         $a = array();
+		/*
         foreach ($dbh->query("SELECT * FROM events WHERE flags & 8 > 0 ORDER BY id") as $rowe) {
             $a[] = '<a href="tahtpaevad'
                 .$init_data['static_extension']
@@ -72,21 +75,26 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
                 .'</a>';
 
         }
-        $solistices = ": ".implode(", ",$a)."<br/>\n";
+		*/
+		foreach($seasons as $k => $v) {
+			$a[] = '<a href="tahtpaevad'
+                .$init_data['static_extension']
+                .'#'.(21 + $k).'">'
+                .$v
+                .'</a>';
+		}
+        $solistices .= ": ".implode(", ",$a)."<br/>\n";
     }
     
+	if($row['dbid'] >= 10 && $row['dbid'] <= 17) {
+        $solistices .= trim($row['more']) == '' ? '' : "<br/>".$row['more']."\n";
+    }
+	
     // nonastronomical/non-week events will be fetched from events table
-    $name = $row['name'];
-    $link = '';
-    if($row['dbid'] > 20) {
-        foreach ($dbh->query("SELECT * FROM events WHERE id = ".$row['dbid']) as $rowe) {
-            $name = $rowe['maausk'];
-            $link = '<a href="tahtpaevad'
+	$name = $row['dbid'] > 24 ? $row['maausk'] : $row['event'];
+    $link = '<a href="tahtpaevad'
                 .$init_data['static_extension']
                 .'#'.$row['dbid'].'">';
-        }
-    }
-    
     
     echo '<tr><td valign="top" class="r_c"><a name="'
     .$row['dbid']
@@ -118,9 +126,8 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
  ?>
 </table>
 
-<center>
 <br/>
-TODO: Hetkel tegemata veel: taliharjapäev, sirgupäev, künnipäev, karjalaskepäev, hingepäev. munapüha.<br/><br/>
+<br/>
 <?php 
 
 echo $calendardata['html_dbcopy']; 
