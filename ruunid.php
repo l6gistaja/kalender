@@ -15,7 +15,7 @@ include('includes/web_header.php');
 <li><a href="#114">Liikumatud tähtpäevad</a></li>
 <li><a href="#1993">Liikuvad tähtpäevad</a></li>
 </ol>
-<table class="r_t">
+<table class="r_t" width="65%">
 <?php 
 
 $dbh = new PDO($init_data['dbc']);
@@ -110,7 +110,7 @@ foreach ($dbh->query("SELECT * FROM runes ORDER BY dbid") as $row) {
     
     ."</td>\n"
     .'<td valign="top" class="r_c">'
-    .'<embed src="svg/'.$row['filename'].'" type="image/svg+xml" height="200" width="'.$row['width'].'"/>'
+    .'<object data="svg/'.$row['filename'].'" type="image/svg+xml" height="200" width="'.$row['width'].'"></object>'
     ."</td>\n"
     ."</tr>\n\n";
 }

@@ -86,9 +86,12 @@ foreach ($dbh->query($sql) as $row) {
             if($row['rune_id']) {
                 $sql = "SELECT r.* FROM runes r WHERE r.dbid=".$row['rune_id'];
                 foreach($dbh->query($sql) as $rune) {
+					/*
                     $runeurl = 'r.php?f='.$rune['filename']
                         .'&w='.$rune['width']
                         .'&n='.$row['maausk'];
+					*/
+					$runeurl = 'svg/'.$rune['filename'];
                     $runelink = '<a target="_blank" href="'.$runeurl.'" onClick="return r(\''.$row['maausk'].'\','.$rune['width'].',\''.$rune['filename'].'\');" title="Vaata sirvikalendri ruuni">';
                     break;
                 }
@@ -234,10 +237,10 @@ foreach ($dbh->query(
   ." AND c.http_status = 200" //surnud linkide filter
   ." GROUP BY c.id ORDER BY c.urlcategory"
 ) as $src) {
-  echo '<li>'.$src['c.urlcategory'].' ('.$src['ucc'].')'
-  .( $src['c.id'] != '0' ? ':   <a href="'.$src['c.site'].'">'.$src['c.site'].'</a>' : '')
+  echo '<li>'.$src['c.urlcategory'].' ('.$src['ucc'].'):   '
+  .( $src['id'] != '0' ? '<a href="'.$src['site'].'">'.$src['site'].'</a>' : 'WWW')
   .'</li>'."\n";
-  #echo '<li>'."\n";print_r($src);echo '</li>'."\n";
+  //echo '<li>'."\n";print_r($src);echo '</li>'."\n";
 }
 
 echo '</ol>';
