@@ -246,8 +246,8 @@ foreach ($dbh->query(
   ." AND c.http_status = 200" //surnud linkide filter
   ." GROUP BY c.id ORDER BY c.urlcategory"
 ) as $src) {
-  echo '<li>'.$src['c.urlcategory'].' ('.$src['ucc'].'):   '
-  .( $src['id'] != '0' ? '<a href="'.$src['site'].'">'.$src['site'].'</a>' : 'WWW')
+  echo '<li>'.$src['urlcategory'].' ('.$src['ucc'].')'
+  .( $src['id'] != '0' ? ':   <a href="'.$src['site'].'">'.$src['site'].'</a>' : '')
   .'</li>'."\n";
   //echo '<li>'."\n";print_r($src);echo '</li>'."\n";
 }
