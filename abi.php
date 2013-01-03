@@ -228,8 +228,11 @@ foreach($tablenames as $tablename) {
         $row['column_key'] = trim($row['column_key']);
         if($row['column_key'] == 'PK') {
             $row['column_key'] = 'Esmasvõti';
-        } else if($row['column_key'] != '') {
+        } else if(preg_match('/[a-z]/',$row['column_key'])) {
+			//echo $row['column_name'].'|'.htmlspecialchars($row['column_key']).'|<br/>';
             $row['column_key'] = '<a href="#tabel.'.$row['column_key'].'">'.$row['column_key'].'</a>';
+			//print_r($row);
+			
         }
         
         if($init_bitmaps[$tablename.'.'.$row['column_name']]) {
