@@ -44,6 +44,12 @@ $init_data['pages'] = array(
   
 );
 
+if($_GET['java'] == '1') {
+	$init_data['pages'][0]['page'] = '../index';
+	$init_data['pages'][0]['ext'] = '.html';
+}
+    
+
 // find current page
 $namepieces = explode('.', get_request_name());
 $pgname = $namepieces[0];

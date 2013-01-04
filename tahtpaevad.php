@@ -219,7 +219,7 @@ foreach ($dbh->query($sql) as $row) {
     if(strtoupper($row['res_type'])=='V') { $restype = '<sup> video</sup>'; }
        
     echo ($linkno ? ', ' : '<br />Viited: ')
-        . '<a href="' . $row['urlprefix'] . $row['url'] . '">' 
+        . '<a href="' . $row['urlprefix'] . $row['url'] . '" target="_blank">' 
         . $urlcategory1 . $urlno
         . '</a>' . $restype ."\n";
         
