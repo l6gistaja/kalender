@@ -30,10 +30,44 @@
 <li><a href="#liikuvad">Muud liikuvad tähtpäevad</a></li>
 <li><a href="#allikad">Peamised allikad ja viited</a></li>
 </ol>
+
+<script type="text/javascript">
+
+    var searchConf = {
+        main_searchsite : 'http://arhiiv.err.ee/otsi/',
+        choices : [
+            { urlPrefix : 'http://arhiiv.err.ee/otsi/', site: 'ERR arhiiv' },
+            { urlPrefix : 'http://www.google.ee/search?q=', site: 'Google' }
+        ]
+    }
+    
+    document.writeln('<strong>Vali otsingusait : </strong><select id="searchsite">');
+    for(i=0;i<searchConf.choices.length;i++) {
+        document.writeln('<option'
+            + (searchConf.choices[i].urlPrefix==searchConf.main_searchsite ?' selected="selected"':'')
+            + '>' + searchConf.choices[i].site + '</option>');
+    }
+    document.writeln('</select>');
+    
+    function s(link) {
+         selector = document.getElementById("searchsite");
+         i = selector.selectedIndex;
+         if(searchConf.choices[i].urlPrefix == searchConf.main_searchsite) {
+            return true;
+         } else {
+            location.href = searchConf.choices[i].urlPrefix
+                + link.href.substr(searchConf.main_searchsite.length);
+            return false;
+         }
+    }
+    
+    
+</script>
+
 <br/><br/><h1><a name="pqqrip2evad">Pööripäevad</a></h1>
 
 
-<br /><br /><strong><a name="21"></a>Kevadine pööripäev</strong><div class="day">
+<br /><br /><strong><a name="21"></a><a href="http://arhiiv.err.ee/otsi/Kevadine pööripäev" target="_blank" onclick="return s(this);">Kevadine pööripäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/solstice.svg" onClick="return r('Kevadine pööripäev',199,'solstice.svg');" title="Vaata sirvikalendri ruuni">Kevadine pööripäev</a></strong>
 <br />20. või 21.03.
 <br />Viited: <a href="http://www.horisont.ee/node/1368" target="_blank">Horisont</a>
@@ -43,7 +77,7 @@
 </div>
 
 
-<br /><br /><strong><a name="22"></a>Suvine pööripäev</strong><div class="day">
+<br /><br /><strong><a name="22"></a><a href="http://arhiiv.err.ee/otsi/Suvine pööripäev" target="_blank" onclick="return s(this);">Suvine pööripäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/solstice.svg" onClick="return r('Suvine pööripäev',199,'solstice.svg');" title="Vaata sirvikalendri ruuni">Suvine pööripäev</a></strong>
 <br />21. või 22.06.
 <br />Viited: <a href="http://www.bioneer.ee/eluviis/ilu/aid-8291/Rahvakalendri-suurim-p%C3%BCha-l%C3%A4heneb" target="_blank">Bioneer</a>
@@ -56,7 +90,7 @@
 </div>
 
 
-<br /><br /><strong><a name="23"></a>Sügisene pööripäev</strong><div class="day">
+<br /><br /><strong><a name="23"></a><a href="http://arhiiv.err.ee/otsi/Sügisene pööripäev" target="_blank" onclick="return s(this);">Sügisene pööripäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/solstice.svg" onClick="return r('Sügisene pööripäev',199,'solstice.svg');" title="Vaata sirvikalendri ruuni">Sügisene pööripäev</a></strong>
 <br />22. või 23.09.
 <br />Viited: <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=100&id=4747" target="_blank">Maavald</a>
@@ -66,7 +100,7 @@
 </div>
 
 
-<br /><br /><strong><a name="24"></a>Talvine pööripäev</strong><div class="day">
+<br /><br /><strong><a name="24"></a><a href="http://arhiiv.err.ee/otsi/Talvine pööripäev" target="_blank" onclick="return s(this);">Talvine pööripäev</a></strong><div class="day">
 <br />21. või 22.12.
 <br />Viited: <a href="http://www.horisont.ee/node/290" target="_blank">Horisont</a>
 , <a href="http://www.folklore.ee/tagused/nr28/TY.htm" target="_blank">folklore.ee</a>
@@ -76,10 +110,7 @@
 <br/><br/><h1><a name="q1">Jaanuar</a></h1>
 
 
-<br /><br /><strong><a name="101">1.1</a>: Uue aasta päev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
-<br /><strong>*</strong> Eelnev tööpäev on lühendatud.
+<br /><br /><strong><a name="101">1.1</a>: <a href="http://arhiiv.err.ee/otsi/Uue aasta päev" target="_blank" onclick="return s(this);">Uue aasta päev</a></strong><div class="day">
 <br />Ka näärid.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-naaripaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/bioneer/kohalik/aid-3022/1.-jaanuari-s%C3%BCndmused-ja-kombed" target="_blank">Bioneer</a>
@@ -88,22 +119,21 @@
 </div>
 
 
-<br /><br /><strong><a name="102">2.1</a>: Nääriannepäev</strong><div class="day">
+<br /><br /><strong><a name="102">2.1</a>: <a href="http://arhiiv.err.ee/otsi/Nääriannepäev" target="_blank" onclick="return s(this);">Nääriannepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.bioneer.ee/bioneer/kohalik/aid-3023/2.-jaanuari-s%C3%BCndmused-ja-kombed" target="_blank">Bioneer</a>
 <br />ID andmebaasis: <a href="#102">102</a>
 </div>
 
 
-<br /><br /><strong><a name="103">3.1</a>: Vabadussõjas võidelnute mälestuspäev (1920)</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
+<br /><br /><strong><a name="103">3.1</a>: <a href="http://arhiiv.err.ee/otsi/Vabadussõjas võidelnute mälestuspäev" target="_blank" onclick="return s(this);">Vabadussõjas võidelnute mälestuspäev (1920)</a></strong><div class="day">
+<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br />Viited: <a href="http://www.youtube.com/watch?v=dFlO9P3TXNE" target="_blank">youtube.com</a><sup> video</sup>
 , <a href="http://et.wikipedia.org/wiki/Eesti_Vabadussõda#1920" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#103">103</a>
 </div>
 
 
-<br /><br /><strong><a name="106">6.1</a>: Kolmekuningapäev</strong><div class="day">
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="106">6.1</a>: <a href="http://arhiiv.err.ee/otsi/Kolmekuningapäev" target="_blank" onclick="return s(this);">Kolmekuningapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-kolmekungingapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?42208" target="_blank">Ilm.ee</a>
 , <a href="kirikukalender/kalend1.html#Kolmekuningap." target="_blank">Kirikupühasid</a>
@@ -114,7 +144,7 @@
 </div>
 
 
-<br /><br /><strong><a name="107">7.1</a>: Nuudipäev</strong><div class="day">
+<br /><br /><strong><a name="107">7.1</a>: <a href="http://arhiiv.err.ee/otsi/Nuudipäev" target="_blank" onclick="return s(this);">Nuudipäev</a></strong><div class="day">
 <br />Ka kanutipäev. Alates 18. sajandi algusest hakati nuudipäeva tähistama 13. jaanuaril.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-nuudipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/bioneer/kohalik/aid-3184/7.-jaanuari-olulised-kombed-ja-s%C3%BCndmused" target="_blank">Bioneer</a>
@@ -125,7 +155,7 @@
 </div>
 
 
-<br /><br /><strong><a name="114">14.1</a>: Taliharjapäev</strong><div class="day">
+<br /><br /><strong><a name="114">14.1</a>: <a href="http://arhiiv.err.ee/otsi/Taliharjapäev" target="_blank" onclick="return s(this);">Taliharjapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k114.svg" onClick="return r('Korjusepäev',200,'k114.svg');" title="Vaata sirvikalendri ruuni">Korjusepäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-taliharjapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/bioneer/kohalik/aid-3251/14.-jaanuar-on-taliharjap%C3%A4ev" target="_blank">Bioneer</a>
@@ -138,7 +168,7 @@
 </div>
 
 
-<br /><br /><strong><a name="117">17.1</a>: Tõnisepäev</strong><div class="day">
+<br /><br /><strong><a name="117">17.1</a>: <a href="http://arhiiv.err.ee/otsi/Tõnisepäev" target="_blank" onclick="return s(this);">Tõnisepäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k117.svg" onClick="return r('Taliharjapäev',320,'k117.svg');" title="Vaata sirvikalendri ruuni">Taliharjapäev</a></strong>
 <br />Ka tõniksepäev, tinnüspää, kesktalvepäev, jõuluemapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-tonisepaev.php" target="_blank">BERTA</a>
@@ -156,7 +186,7 @@
 </div>
 
 
-<br /><br /><strong><a name="125">25.1</a>: Paavlipäev</strong><div class="day">
+<br /><br /><strong><a name="125">25.1</a>: <a href="http://arhiiv.err.ee/otsi/Paavlipäev" target="_blank" onclick="return s(this);">Paavlipäev</a></strong><div class="day">
 <br />Ka tatjanapäev, tanjapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-paavlipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.folklore.ee/Berta/tahtpaev-tatjanapaev.php" target="_blank">BERTA 2</a>
@@ -167,18 +197,14 @@
 <br/><br/><h1><a name="q2">Veebruar</a></h1>
 
 
-<br /><br /><strong><a name="202">2.2</a>: Küünlapäev. Tartu rahu (1920) aastapäev</strong><div class="day">
+<br /><br /><strong><a name="202">2.2</a>: <a href="http://arhiiv.err.ee/otsi/Küünlapäev" target="_blank" onclick="return s(this);">Küünlapäev</a>.<a href="http://arhiiv.err.ee/otsi/Tartu rahu" target="_blank" onclick="return s(this);"> Tartu rahu (1920)</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k202.svg" onClick="return r('Pudrupäev',181,'k202.svg');" title="Vaata sirvikalendri ruuni">Pudrupäev</a></strong>
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
-<br />Ka küünlamaarjapäev.
+<br />Ka küünlamaarjapäev. Tartu rahu aastapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-kuunlapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-3531/RAHVAKALENDER%3A-Pudrup%C3%A4eval-joo-tervisepuna" target="_blank">Bioneer</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-7020/RAHVAKALENDER%3A-Pudrup%C3%A4eval-juuakse-tervisepuna" target="_blank">Bioneer 2</a>
-, <a href="http://arhiiv.err.ee/vaata/argipaev-argipaev-tartu-rahu-85" target="_blank">ER arhiiv</a><sup> audio</sup>
-, <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-216-tartu-rahu-27961" target="_blank">ER arhiiv 2</a><sup> audio</sup>
-, <a href="http://etv.err.ee/arhiiv.php?id=102391" target="_blank">ETV arhiiv</a><sup> video</sup>
-, <a href="http://etv.err.ee/arhiiv.php?id=124951" target="_blank">ETV arhiiv 2</a><sup> video</sup>
+, <a href="http://arhiiv.err.ee/vaata/argipaev-argipaev-tartu-rahu-85" target="_blank">ERR arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-216-tartu-rahu-27961" target="_blank">ERR arhiiv 2</a><sup> audio</sup>
 , <a href="http://www.ilm.ee/index.php?43265" target="_blank">Ilm.ee</a>
 , <a href="kirikukalender/kalend1.html#Kyynlap." target="_blank">Kirikupühasid</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/kyynlapaev.php" target="_blank">Kristlik kultuur</a>
@@ -194,14 +220,14 @@
 </div>
 
 
-<br /><br /><strong><a name="206">6.2</a>: Taara austamise päev</strong><div class="day">
+<br /><br /><strong><a name="206">6.2</a>: <a href="http://arhiiv.err.ee/otsi/Taara austamise päev" target="_blank" onclick="return s(this);">Taara austamise päev</a></strong><div class="day">
 <br />Tähistatakse eelõhtul.
 <br />Viited: <a href="http://et.wikipedia.org/wiki/Taara" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#206">206</a>
 </div>
 
 
-<br /><br /><strong><a name="209">9.2</a>: Luuvalupäev</strong><div class="day">
+<br /><br /><strong><a name="209">9.2</a>: <a href="http://arhiiv.err.ee/otsi/Luuvalupäev" target="_blank" onclick="return s(this);">Luuvalupäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k209.svg" onClick="return r('Luuvalupäev',200,'k209.svg');" title="Vaata sirvikalendri ruuni">Luuvalupäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-luuvalupaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-10154/RAHVAKALENDER%3A-Homme-p%C3%B5%C3%B5nake-terviseks-" target="_blank">Bioneer</a>
@@ -214,13 +240,13 @@
 </div>
 
 
-<br /><br /><strong><a name="211">11.2</a>: Ulasepäev</strong><div class="day">
+<br /><br /><strong><a name="211">11.2</a>: <a href="http://arhiiv.err.ee/otsi/Ulasepäev" target="_blank" onclick="return s(this);">Ulasepäev</a></strong><div class="day">
 <br />Viited: <a href="http://miksike.net/documents/main/lisa/pidu/teised/ulaspaev.htm" target="_blank">Miksike</a>
 <br />ID andmebaasis: <a href="#211">211</a>
 </div>
 
 
-<br /><br /><strong><a name="214">14.2</a>: Valentinipäev</strong><div class="day">
+<br /><br /><strong><a name="214">14.2</a>: <a href="http://arhiiv.err.ee/otsi/Valentinipäev" target="_blank" onclick="return s(this);">Valentinipäev</a></strong><div class="day">
 <br />Ka sõbrapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-valentinipaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend2.html#Valentinip." target="_blank">Kirikupühasid</a>
@@ -235,7 +261,7 @@
 </div>
 
 
-<br /><br /><strong><a name="222">22.2</a>: Talvine peetripäev</strong><div class="day">
+<br /><br /><strong><a name="222">22.2</a>: <a href="http://arhiiv.err.ee/otsi/Talvine peetripäev" target="_blank" onclick="return s(this);">Talvine peetripäev</a></strong><div class="day">
 <br />Ka Peetri helinapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-peetripaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/peetrip.htm" target="_blank">Miksike</a>
@@ -244,12 +270,9 @@
 </div>
 
 
-<br /><br /><strong><a name="224">24.2</a>: Kevadine madisepäev. Eesti iseseisvuspäev (1918)</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
-<br /><strong>*</strong> Eelnev tööpäev on lühendatud.
+<br /><br /><strong><a name="224">24.2</a>: <a href="http://arhiiv.err.ee/otsi/Kevadine madisepäev" target="_blank" onclick="return s(this);">Kevadine madisepäev</a>.<a href="http://arhiiv.err.ee/otsi/Eesti iseseisvuspäev" target="_blank" onclick="return s(this);"> Eesti iseseisvuspäev (1918)</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-madisepaev.php" target="_blank">BERTA</a>
-, <a href="http://arhiiv.err.ee/vaata/ajalootund-r2-s-ajalootund-r2-s-vabariigi-aastapaev" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/ajalootund-r2-s-ajalootund-r2-s-vabariigi-aastapaev" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://miksike.net/documents/main/lisa/pidu/madisepaev/madisepev.htm" target="_blank">Miksike</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/madisepaev/madisp.htm" target="_blank">Miksike 2</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/madisepaev/madispt.htm" target="_blank">Miksike 3</a>
@@ -258,7 +281,7 @@
 </div>
 
 
-<br /><br /><strong><a name="229">29.2</a>: Liigpäev</strong><div class="day">
+<br /><br /><strong><a name="229">29.2</a>: <a href="http://arhiiv.err.ee/otsi/Liigpäev" target="_blank" onclick="return s(this);">Liigpäev</a></strong><div class="day">
 <br />Ka võsakoos, vanatondipäev. Tüdrukud ja lesknaised võivad kosja minna. Tähistatakse eelõhtul.
 <br />Viited: <a href="http://www.ekspress.ee/news/paevauudised/elu/vanatudrukud-ja-lesknaised-kosja-marss.d?id=27675285" target="_blank">ekspress.ee</a>
 , <a href="http://et.wikipedia.org/wiki/Liigaasta" target="_blank">Wikipeedia</a>
@@ -267,14 +290,14 @@
 <br/><br/><h1><a name="q3">Märts</a></h1>
 
 
-<br /><br /><strong><a name="301">1.3</a>: Evdokipäev</strong><div class="day">
+<br /><br /><strong><a name="301">1.3</a>: <a href="http://arhiiv.err.ee/otsi/Evdokipäev" target="_blank" onclick="return s(this);">Evdokipäev</a></strong><div class="day">
 <br />Ka (j)evdokiapäev, eudokiapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-jevdokipaev.php" target="_blank">BERTA</a>
 <br />ID andmebaasis: <a href="#301">301</a>
 </div>
 
 
-<br /><br /><strong><a name="309">9.3</a>: Sorokasveet</strong><div class="day">
+<br /><br /><strong><a name="309">9.3</a>: <a href="http://arhiiv.err.ee/otsi/Sorokasveet" target="_blank" onclick="return s(this);">Sorokasveet</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k309.svg" onClick="return r('Sirgupäev',170,'k309.svg');" title="Vaata sirvikalendri ruuni">Sirgupäev</a></strong>
 <br />Ka tsirgupäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-tsirgupaev.php" target="_blank">BERTA</a>
@@ -285,7 +308,7 @@
 </div>
 
 
-<br /><br /><strong><a name="312">12.3</a>: Korjusepäev</strong><div class="day">
+<br /><br /><strong><a name="312">12.3</a>: <a href="http://arhiiv.err.ee/otsi/Korjusepäev" target="_blank" onclick="return s(this);">Korjusepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-korjusepaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/rahvamart2.htm" target="_blank">Miksike</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/talihar.htm" target="_blank">Miksike 2</a>
@@ -294,9 +317,7 @@
 </div>
 
 
-<br /><br /><strong><a name="314">14.3</a>: Emakeelepäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="314">14.3</a>: <a href="http://arhiiv.err.ee/otsi/Emakeelepäev" target="_blank" onclick="return s(this);">Emakeelepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-emakeelepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/1403.htm" target="_blank">Kaarlike</a>
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=99&id=4626" target="_blank">Maavald</a>
@@ -305,7 +326,7 @@
 </div>
 
 
-<br /><br /><strong><a name="317">17.3</a>: Alekseipäev. Käädripäev</strong><div class="day">
+<br /><br /><strong><a name="317">17.3</a>: <a href="http://arhiiv.err.ee/otsi/Alekseipäev" target="_blank" onclick="return s(this);">Alekseipäev</a>.<a href="http://arhiiv.err.ee/otsi/Käädripäev" target="_blank" onclick="return s(this);"> Käädripäev</a></strong><div class="day">
 <br />Ka ussiliikumise päev, käändrepäev, kärdlapäev, käärdlipäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-alekseipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.folklore.ee/Berta/tahtpaev-kaadripaev.php" target="_blank">BERTA 2</a>
@@ -315,19 +336,19 @@
 </div>
 
 
-<br /><br /><strong><a name="321">21.3</a>: Pendipäev</strong><div class="day">
+<br /><br /><strong><a name="321">21.3</a>: <a href="http://arhiiv.err.ee/otsi/Pendipäev" target="_blank" onclick="return s(this);">Pendipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-pendipaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/pendip.htm" target="_blank">Miksike</a>
 <br />ID andmebaasis: <a href="#321">321</a>
 </div>
 
 
-<br /><br /><strong><a name="325">25.3</a>: Paastumaarjapäev. Märtsiküüditamine (1949)</strong><div class="day">
+<br /><br /><strong><a name="325">25.3</a>: <a href="http://arhiiv.err.ee/otsi/Paastumaarjapäev" target="_blank" onclick="return s(this);">Paastumaarjapäev</a>.<a href="http://arhiiv.err.ee/otsi/Märtsiküüditamine" target="_blank" onclick="return s(this);"> Märtsiküüditamine (1949)</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k325.svg" onClick="return r('Marjapunapäev',80,'k325.svg');" title="Vaata sirvikalendri ruuni">Marjapunapäev</a></strong>
 <br />Ka punamaarjapäev, kapsamaarjapäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-maarjapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-3975/RAHVAKALENDER%3A-Marjapunap%C3%A4ev-toob-kevade" target="_blank">Bioneer</a>
-, <a href="http://etv.err.ee/arhiiv.php?id=104433" target="_blank">ETV arhiiv</a><sup> video</sup>
+, <a href="http://arhiiv.err.ee/vaata/eesti-aja-lood-okupatsioonid-kevad-1949" target="_blank">ERR arhiiv</a><sup> video</sup>
 , <a href="kirikukalender/kalend2.html#Paastumaarjap." target="_blank">Kirikupühasid</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/paastupaev.php" target="_blank">Kristlik kultuur</a>
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=461" target="_blank">Maavald</a>
@@ -344,7 +365,7 @@
 <br/><br/><h1><a name="q4">Aprill</a></h1>
 
 
-<br /><br /><strong><a name="401">1.4</a>: Karjalaskepäev. Naljapäev</strong><div class="day">
+<br /><br /><strong><a name="401">1.4</a>: <a href="http://arhiiv.err.ee/otsi/Karjalaskepäev" target="_blank" onclick="return s(this);">Karjalaskepäev</a>.<a href="http://arhiiv.err.ee/otsi/Naljapäev" target="_blank" onclick="return s(this);"> Naljapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-karjalaskepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.folklore.ee/Berta/tahtpaev-naljapaev.php" target="_blank">BERTA 2</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_1_aprill" target="_blank">Kultuurilaegas</a>
@@ -353,7 +374,7 @@
 </div>
 
 
-<br /><br /><strong><a name="414">14.4</a>: Künnipäev</strong><div class="day">
+<br /><br /><strong><a name="414">14.4</a>: <a href="http://arhiiv.err.ee/otsi/Künnipäev" target="_blank" onclick="return s(this);">Künnipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k414.svg" onClick="return r('Künnipäev',160,'k414.svg');" title="Vaata sirvikalendri ruuni">Künnipäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-kunnipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-4236/RAHVAKALENDER%3A-K%C3%BCnnip%C3%A4ev" target="_blank">Bioneer</a>
@@ -365,11 +386,11 @@
 </div>
 
 
-<br /><br /><strong><a name="423">23.4</a>: Jüripäev</strong><div class="day">
+<br /><br /><strong><a name="423">23.4</a>: <a href="http://arhiiv.err.ee/otsi/Jüripäev" target="_blank" onclick="return s(this);">Jüripäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k423.svg" onClick="return r('Karjalaskepäev',320,'k423.svg');" title="Vaata sirvikalendri ruuni">Karjalaskepäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-juripaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-7813/RAHVAKALENDER%3A-T%C3%A4na-on-karjalaskep%C3%A4ev" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/ajalootund-r2-s-juripaevast-juripaevani" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/ajalootund-r2-s-juripaevast-juripaevani" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/2304.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend2.html#Jyrip." target="_blank">Kirikupühasid</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_jyripaev" target="_blank">Kultuurilaegas</a>
@@ -384,7 +405,7 @@
 </div>
 
 
-<br /><br /><strong><a name="425">25.4</a>: Markusepäev</strong><div class="day">
+<br /><br /><strong><a name="425">25.4</a>: <a href="http://arhiiv.err.ee/otsi/Markusepäev" target="_blank" onclick="return s(this);">Markusepäev</a></strong><div class="day">
 <br />Viited: <a href="kirikukalender/kalend2.html#Markusep." target="_blank">Kirikupühasid</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/markusep.htm" target="_blank">Miksike</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/markusep2.htm" target="_blank">Miksike 2</a>
@@ -394,13 +415,10 @@
 <br/><br/><h1><a name="q5">Mai</a></h1>
 
 
-<br /><br /><strong><a name="501">1.5</a>: Volbripäev. Kevadpüha. Töörahvapüha</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br /><br /><strong><a name="501">1.5</a>: <a href="http://arhiiv.err.ee/otsi/Volbripäev" target="_blank" onclick="return s(this);">Volbripäev</a>.<a href="http://arhiiv.err.ee/otsi/Kevadpüha" target="_blank" onclick="return s(this);"> Kevadpüha</a>.<a href="http://arhiiv.err.ee/otsi/Töörahvapüha" target="_blank" onclick="return s(this);"> Töörahvapüha</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-volbripaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-289/RAHVAKALENDER%3A-1.mai-t%C3%A4hendab-volbrip%C3%A4eva-ja-maitulesid" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/vikerhommik-vikerhommik-1-mai" target="_blank">ER arhiiv</a><sup> audio</sup>
-, <a href="http://etv.err.ee/arhiiv.php?id=116516" target="_blank">ETV arhiiv</a><sup> video</sup>
+, <a href="http://arhiiv.err.ee/vaata/vikerhommik-vikerhommik-1-mai" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/0105.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend2.html#Volbrip." target="_blank">Kirikupühasid</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_maipyha" target="_blank">Kultuurilaegas</a>
@@ -414,15 +432,14 @@
 </div>
 
 
-<br /><br /><strong><a name="503">3.5</a>: Viilupipäev</strong><div class="day">
+<br /><br /><strong><a name="503">3.5</a>: <a href="http://arhiiv.err.ee/otsi/Viilupipäev" target="_blank" onclick="return s(this);">Viilupipäev</a></strong><div class="day">
 <br />Viited: <a href="http://miksike.net/documents/main/lisa/pidu/teised/viilupipev.htm" target="_blank">Miksike</a>
 <br />ID andmebaasis: <a href="#503">503</a>
 </div>
 
 
-<br /><br /><strong><a name="509">9.5</a>: Kevadine nigulapäev. Euroopa päev (1950)</strong><div class="day">
+<br /><br /><strong><a name="509">9.5</a>: <a href="http://arhiiv.err.ee/otsi/Kevadine nigulapäev" target="_blank" onclick="return s(this);">Kevadine nigulapäev</a>.<a href="http://arhiiv.err.ee/otsi/Euroopa päev" target="_blank" onclick="return s(this);"> Euroopa päev (1950)</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k509.svg" onClick="return r('Ligupäev',181,'k509.svg');" title="Vaata sirvikalendri ruuni">Ligupäev</a></strong>
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-nigulapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-4527/RAHVAKALENDER%3A-T%C3%A4na-on-ligup%C3%A4ev" target="_blank">Bioneer</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-7923/RAHVAKALENDER%3A-P%C3%BChap%C3%A4eval-on-ligup%C3%A4ev" target="_blank">Bioneer 2</a>
@@ -437,13 +454,13 @@
 </div>
 
 
-<br /><br /><strong><a name="518">18.5</a>: Eerikupäev</strong><div class="day">
+<br /><br /><strong><a name="518">18.5</a>: <a href="http://arhiiv.err.ee/otsi/Eerikupäev" target="_blank" onclick="return s(this);">Eerikupäev</a></strong><div class="day">
 <br />Viited: <a href="http://miksike.net/documents/main/lisa/pidu/teised/eerikupev.htm" target="_blank">Miksike</a>
 <br />ID andmebaasis: <a href="#518">518</a>
 </div>
 
 
-<br /><br /><strong><a name="525">25.5</a>: Urbanipäev</strong><div class="day">
+<br /><br /><strong><a name="525">25.5</a>: <a href="http://arhiiv.err.ee/otsi/Urbanipäev" target="_blank" onclick="return s(this);">Urbanipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-urbanipaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/urbanipev.htm" target="_blank">Miksike</a>
 , <a href="http://et.wikipedia.org/wiki/Urbanus_I" target="_blank">Wikipeedia</a>
@@ -452,27 +469,25 @@
 <br/><br/><h1><a name="q6">Juuni</a></h1>
 
 
-<br /><br /><strong><a name="604">4.6</a>: Eesti lipu (1884) päev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="604">4.6</a>: <a href="http://arhiiv.err.ee/otsi/Eesti lipu  päev" target="_blank" onclick="return s(this);">Eesti lipu (1884) päev</a></strong><div class="day">
+<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br />Viited: <a href="http://etv.err.ee/arhiiv.php?id=103283" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://et.wikipedia.org/wiki/Eesti_lipp#Ajalugu" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#604">604</a>
 </div>
 
 
-<br /><br /><strong><a name="614">14.6</a>: Juuniküüditamise (1941) leinapäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
-<br />Lipp heisatakse leinalipuna.
-<br />Viited: <a href="http://etv.err.ee/arhiiv.php?id=118063" target="_blank">ETV arhiiv</a><sup> video</sup>
+<br /><br /><strong><a name="614">14.6</a>: <a href="http://arhiiv.err.ee/otsi/Juuniküüditamine" target="_blank" onclick="return s(this);">Juuniküüditamine (1941)</a></strong><div class="day">
+<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br />Juuniküüditamise leinapäev. Lipp heisatakse leinalipuna.
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/malestuste-joel-malestuste-joel-38564" target="_blank">ERR arhiiv</a><sup> video</sup>
 , <a href="http://www.estonica.org/et/Juuniküüditamine/" target="_blank">estonica.org</a>
 , <a href="http://et.wikipedia.org/wiki/Juuniküüditamine" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#614">614</a>
 </div>
 
 
-<br /><br /><strong><a name="615">15.6</a>: Viidipäev</strong><div class="day">
+<br /><br /><strong><a name="615">15.6</a>: <a href="http://arhiiv.err.ee/otsi/Viidipäev" target="_blank" onclick="return s(this);">Viidipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.eelk.ee/~kkaarlike/kuupaev/1506.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend2.html#Viidip." target="_blank">Kirikupühasid</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/lipupev.htm" target="_blank">Miksike</a>
@@ -482,12 +497,10 @@
 </div>
 
 
-<br /><br /><strong><a name="623">23.6</a>: Võidupüha</strong><div class="day">
+<br /><br /><strong><a name="623">23.6</a>: <a href="http://arhiiv.err.ee/otsi/Võidupüha" target="_blank" onclick="return s(this);">Võidupüha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/n1.svg" onClick="return r('Leedopäev',40,'n1.svg');" title="Vaata sirvikalendri ruuni">Leedopäev</a></strong>
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
-<br /><strong>*</strong> Eelnev tööpäev on lühendatud.
-<br />Viited: <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-197-vonnu-lahing" target="_blank">ER arhiiv</a><sup> audio</sup>
+<br /><strong>*</strong> On riiklik tähtpäev.
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-197-vonnu-lahing" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://etv.err.ee/arhiiv.php?id=118338" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=1743" target="_blank">Maavald</a>
 , <a href="http://et.wikipedia.org/wiki/Võidupüha" target="_blank">Wikipeedia</a>
@@ -496,9 +509,7 @@
 </div>
 
 
-<br /><br /><strong><a name="624">24.6</a>: Jaanipäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br /><br /><strong><a name="624">24.6</a>: <a href="http://arhiiv.err.ee/otsi/Jaanipäev" target="_blank" onclick="return s(this);">Jaanipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-jaanipaev.php" target="_blank">BERTA</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/jaanipaev.php" target="_blank">Kristlik kultuur</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_suvi/rk_jaanipaev" target="_blank">Kultuurilaegas</a>
@@ -514,7 +525,7 @@
 </div>
 
 
-<br /><br /><strong><a name="627">27.6</a>: Seitsmemagajapäev</strong><div class="day">
+<br /><br /><strong><a name="627">27.6</a>: <a href="http://arhiiv.err.ee/otsi/Seitsmemagajapäev" target="_blank" onclick="return s(this);">Seitsmemagajapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-seitsmemagajapaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend2.html#7magajap." target="_blank">Kirikupühasid</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/seitsmemagajap.htm" target="_blank">Miksike</a>
@@ -523,7 +534,7 @@
 </div>
 
 
-<br /><br /><strong><a name="629">29.6</a>: Suvine peetripäev</strong><div class="day">
+<br /><br /><strong><a name="629">29.6</a>: <a href="http://arhiiv.err.ee/otsi/Suvine peetripäev" target="_blank" onclick="return s(this);">Suvine peetripäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-suvinepeetripaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/paulip.htm" target="_blank">Miksike</a>
 , <a href="http://uuseesti.ee/9819" target="_blank">Uus Eesti</a>
@@ -534,7 +545,7 @@
 <br/><br/><h1><a name="q7">Juuli</a></h1>
 
 
-<br /><br /><strong><a name="702">2.7</a>: Heinamaarjapäev</strong><div class="day">
+<br /><br /><strong><a name="702">2.7</a>: <a href="http://arhiiv.err.ee/otsi/Heinamaarjapäev" target="_blank" onclick="return s(this);">Heinamaarjapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k202.svg" onClick="return r('Heinaleedo',181,'k202.svg');" title="Vaata sirvikalendri ruuni">Heinaleedo</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-heinamaarjapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-8349/RAHVAKALENDER%3A-Heinaleedo-on-%C3%B5ige-aeg-vihtade-tegemiseks" target="_blank">Bioneer</a>
@@ -546,7 +557,7 @@
 </div>
 
 
-<br /><br /><strong><a name="710">10.7</a>: Seitsmevennapäev</strong><div class="day">
+<br /><br /><strong><a name="710">10.7</a>: <a href="http://arhiiv.err.ee/otsi/Seitsmevennapäev" target="_blank" onclick="return s(this);">Seitsmevennapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-seitsmevennapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?41784" target="_blank">Ilm.ee</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/1007.htm" target="_blank">Kaarlike</a>
@@ -556,7 +567,7 @@
 </div>
 
 
-<br /><br /><strong><a name="713">13.7</a>: Mareta- ehk karusepäev</strong><div class="day">
+<br /><br /><strong><a name="713">13.7</a>: <a href="http://arhiiv.err.ee/otsi/Mareta- ehk karusepäev" target="_blank" onclick="return s(this);">Mareta- ehk karusepäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k713.svg" onClick="return r('Karusepäev',295,'k713.svg');" title="Vaata sirvikalendri ruuni">Karusepäev</a></strong>
 <br />Viited: <a href="http://www.bioneer.ee/eluviis/ilu/aid-8443/RAHVAKALENDER%3A-T%C3%A4na-on-karusep%C3%A4ev-" target="_blank">Bioneer</a>
 , <a href="http://www.ilm.ee/index.php?41794" target="_blank">Ilm.ee</a>
@@ -566,13 +577,13 @@
 </div>
 
 
-<br /><br /><strong><a name="720">20.7</a>: Eliapäev</strong><div class="day">
+<br /><br /><strong><a name="720">20.7</a>: <a href="http://arhiiv.err.ee/otsi/Eliapäev" target="_blank" onclick="return s(this);">Eliapäev</a></strong><div class="day">
 <br />Viited: <a href="txt/720.txt" target="_blank">j.a.e.</a>
 <br />ID andmebaasis: <a href="#720">720</a>
 </div>
 
 
-<br /><br /><strong><a name="722">22.7</a>: Madlipäev</strong><div class="day">
+<br /><br /><strong><a name="722">22.7</a>: <a href="http://arhiiv.err.ee/otsi/Madlipäev" target="_blank" onclick="return s(this);">Madlipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-madlipaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend3.html#Madlip." target="_blank">Kirikupühasid</a>
 , <a href="http://uuseesti.ee/12252" target="_blank">Uus Eesti</a>
@@ -580,7 +591,7 @@
 </div>
 
 
-<br /><br /><strong><a name="725">25.7</a>: Jakobipäev</strong><div class="day">
+<br /><br /><strong><a name="725">25.7</a>: <a href="http://arhiiv.err.ee/otsi/Jakobipäev" target="_blank" onclick="return s(this);">Jakobipäev</a></strong><div class="day">
 <br />Maausu püha: <strong>Jaakapäev</strong>
 <br />Ka jaagupipäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-jaagupipaev.php" target="_blank">BERTA</a>
@@ -590,13 +601,12 @@
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=100&id=4722" target="_blank">Maavald</a>
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=1160" target="_blank">Maavald 2</a>
 , <a href="http://uuseesti.ee/12593" target="_blank">Uus Eesti</a>
-, <a href="http://uuseesti.ee/12593" target="_blank">Uus Eesti 2</a>
 , <a href="http://naistekas.delfi.ee/kirevmaailm/uudised/jaagupipaeval-laheb-must-mees-poosasse.d?id=19407167" target="_blank">naistekas.delfi.ee</a>
 <br />ID andmebaasis: <a href="#725">725</a>
 </div>
 
 
-<br /><br /><strong><a name="726">26.7</a>: Annepäev</strong><div class="day">
+<br /><br /><strong><a name="726">26.7</a>: <a href="http://arhiiv.err.ee/otsi/Annepäev" target="_blank" onclick="return s(this);">Annepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-annepaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend3.html#Annep." target="_blank">Kirikupühasid</a>
 , <a href="http://uuseesti.ee/12629" target="_blank">Uus Eesti</a>
@@ -604,7 +614,7 @@
 </div>
 
 
-<br /><br /><strong><a name="729">29.7</a>: Olevipäev</strong><div class="day">
+<br /><br /><strong><a name="729">29.7</a>: <a href="http://arhiiv.err.ee/otsi/Olevipäev" target="_blank" onclick="return s(this);">Olevipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k729.svg" onClick="return r('Jakepäev',200,'k729.svg');" title="Vaata sirvikalendri ruuni">Jakepäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-olevipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-5181/RAHVAKALENDER%3A-Rasvaste-silkude-aeg" target="_blank">Bioneer</a>
@@ -617,14 +627,14 @@
 <br/><br/><h1><a name="q8">August</a></h1>
 
 
-<br /><br /><strong><a name="801">1.8</a>: Makaveipäev</strong><div class="day">
+<br /><br /><strong><a name="801">1.8</a>: <a href="http://arhiiv.err.ee/otsi/Makaveipäev" target="_blank" onclick="return s(this);">Makaveipäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-makaveipaev.php" target="_blank">BERTA</a>
 , <a href="http://uuseesti.ee/12996" target="_blank">Uus Eesti</a>
 <br />ID andmebaasis: <a href="#801">801</a>
 </div>
 
 
-<br /><br /><strong><a name="810">10.8</a>: Lauritsapäev</strong><div class="day">
+<br /><br /><strong><a name="810">10.8</a>: <a href="http://arhiiv.err.ee/otsi/Lauritsapäev" target="_blank" onclick="return s(this);">Lauritsapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k810.svg" onClick="return r('Esimene rukkiema päev',150,'k810.svg');" title="Vaata sirvikalendri ruuni">Esimene rukkiema päev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-lauritsapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-5264/RAHVAKALENDER%3A-T%C3%A4na-on-rukki-ja-tule-p%C3%BCha" target="_blank">Bioneer</a>
@@ -641,7 +651,7 @@
 </div>
 
 
-<br /><br /><strong><a name="815">15.8</a>: Rukkimaarjapäev</strong><div class="day">
+<br /><br /><strong><a name="815">15.8</a>: <a href="http://arhiiv.err.ee/otsi/Rukkimaarjapäev" target="_blank" onclick="return s(this);">Rukkimaarjapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k815.svg" onClick="return r('Suur rukkiema päev',180,'k815.svg');" title="Vaata sirvikalendri ruuni">Suur rukkiema päev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-rukkimaarjapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-1186/RAHVAKALENDER%3A-Suur-rukkiema-p%C3%A4ev-" target="_blank">Bioneer</a>
@@ -659,7 +669,7 @@
 </div>
 
 
-<br /><br /><strong><a name="818">18.8</a>: Rollapäev</strong><div class="day">
+<br /><br /><strong><a name="818">18.8</a>: <a href="http://arhiiv.err.ee/otsi/Rollapäev" target="_blank" onclick="return s(this);">Rollapäev</a></strong><div class="day">
 <br />Ka hobusepüha.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-rollapaev.php" target="_blank">BERTA</a>
 , <a href="http://uuseesti.ee/14485" target="_blank">Uus Eesti</a>
@@ -667,7 +677,7 @@
 </div>
 
 
-<br /><br /><strong><a name="819">19.8</a>: Paasapäev</strong><div class="day">
+<br /><br /><strong><a name="819">19.8</a>: <a href="http://arhiiv.err.ee/otsi/Paasapäev" target="_blank" onclick="return s(this);">Paasapäev</a></strong><div class="day">
 <br />Ka õunapüha.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-paasapaev.php" target="_blank">BERTA</a>
 , <a href="http://uuseesti.ee/14492" target="_blank">Uus Eesti</a>
@@ -676,20 +686,19 @@
 </div>
 
 
-<br /><br /><strong><a name="820">20.8</a>: Taasiseseisvuspäev (1991)</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
+<br /><br /><strong><a name="820">20.8</a>: <a href="http://arhiiv.err.ee/otsi/Taasiseseisvuspäev" target="_blank" onclick="return s(this);">Taasiseseisvuspäev (1991)</a></strong><div class="day">
 <br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
-<br />Viited: <a href="http://etv.err.ee/arhiiv.php?id=108740" target="_blank">ETV arhiiv</a><sup> video</sup>
-, <a href="http://etv.err.ee/arhiiv.php?id=116686" target="_blank">ETV arhiiv 2</a><sup> video</sup>
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/ainult-kumme-aastat-9" target="_blank">ERR arhiiv</a><sup> video</sup>
+, <a href="http://etv.err.ee/arhiiv.php?id=108740" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://www.estonica.org/et/Ajalugu/1985-1991_Iseseisvuse_taastamine/Tee_iseseisvusele/" target="_blank">estonica.org</a>
 , <a href="http://et.wikipedia.org/wiki/Eesti_taasiseseisvumine" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#820">820</a>
 </div>
 
 
-<br /><br /><strong><a name="823">23.8</a>: Kommunismi ja natsismi ohvrite mälestuspäev (1939)</strong><div class="day">
-<br /><strong>*</strong> On riiklik tähtpäev.
-<br />Viited: <a href="http://etv.err.ee/arhiiv.php?id=115063" target="_blank">ETV arhiiv</a><sup> video</sup>
+<br /><br /><strong><a name="823">23.8</a>: <a href="http://arhiiv.err.ee/otsi/Kommunismi ja natsismi ohvrite mälestuspäev" target="_blank" onclick="return s(this);">Kommunismi ja natsismi ohvrite mälestuspäev (1939)</a></strong><div class="day">
+<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/ainult-kumme-aastat-1" target="_blank">ERR arhiiv</a><sup> video</sup>
 , <a href="http://www.estonica.org/et/Ajalugu/1939-1945_Eesti_ja_Teine_maailmas%C3%B5da/Molotovi-Ribbentropi_pakt_ja_N%C3%B5ukogude_s%C3%B5jav%C3%A4ebaasid/" target="_blank">estonica.org</a>
 , <a href="http://www.youtube.com/watch?v=nKHpHgpRuHY" target="_blank">youtube.com</a><sup> video</sup>
 , <a href="http://et.wikipedia.org/wiki/Stalinismi_ja_natsismi_ohvrite_mälestuspäev" target="_blank">Wikipeedia</a>
@@ -697,7 +706,7 @@
 </div>
 
 
-<br /><br /><strong><a name="824">24.8</a>: Pärtlipäev</strong><div class="day">
+<br /><br /><strong><a name="824">24.8</a>: <a href="http://arhiiv.err.ee/otsi/Pärtlipäev" target="_blank" onclick="return s(this);">Pärtlipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k824.svg" onClick="return r('Viimane rukkiema päev',256,'k824.svg');" title="Vaata sirvikalendri ruuni">Viimane rukkiema päev</a></strong>
 <br />18. sajandil rukkiema, külviema ehk rohuema päev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-partlipaev.php" target="_blank">BERTA</a>
@@ -711,7 +720,7 @@
 </div>
 
 
-<br /><br /><strong><a name="829">29.8</a>: Ivanoskoroona</strong><div class="day">
+<br /><br /><strong><a name="829">29.8</a>: <a href="http://arhiiv.err.ee/otsi/Ivanoskoroona" target="_blank" onclick="return s(this);">Ivanoskoroona</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-ivanoskoroona.php" target="_blank">BERTA</a>
 , <a href="http://uuseesti.ee/15750" target="_blank">Uus Eesti</a>
 <br />ID andmebaasis: <a href="#829">829</a>
@@ -719,8 +728,7 @@
 <br/><br/><h1><a name="q9">September</a></h1>
 
 
-<br /><br /><strong><a name="901">1.9</a>: Teadmistepäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
+<br /><br /><strong><a name="901">1.9</a>: <a href="http://arhiiv.err.ee/otsi/Teadmistepäev" target="_blank" onclick="return s(this);">Teadmistepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-esimenekoolipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/0109.htm" target="_blank">Kaarlike</a>
 , <a href="http://uuseesti.ee/16000" target="_blank">Uus Eesti</a>
@@ -728,13 +736,13 @@
 </div>
 
 
-<br /><br /><strong><a name="905">5.9</a>: Sahharipäev</strong><div class="day">
+<br /><br /><strong><a name="905">5.9</a>: <a href="http://arhiiv.err.ee/otsi/Sahharipäev" target="_blank" onclick="return s(this);">Sahharipäev</a></strong><div class="day">
 <br />Viited: <a href="txt/905.txt" target="_blank">j.a.e.</a>
 <br />ID andmebaasis: <a href="#905">905</a>
 </div>
 
 
-<br /><br /><strong><a name="908">8.9</a>: Ussimaarjapäev</strong><div class="day">
+<br /><br /><strong><a name="908">8.9</a>: <a href="http://arhiiv.err.ee/otsi/Ussimaarjapäev" target="_blank" onclick="return s(this);">Ussimaarjapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k908.svg" onClick="return r('Ussi urgu minemise päev',181,'k908.svg');" title="Vaata sirvikalendri ruuni">Ussi urgu minemise päev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-ussimaarjapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-8865/RAHVAKALENDER%3A-Ussi-urguminemise-p%C3%A4ev" target="_blank">Bioneer</a>
@@ -750,7 +758,7 @@
 </div>
 
 
-<br /><br /><strong><a name="914">14.9</a>: Vissenja</strong><div class="day">
+<br /><br /><strong><a name="914">14.9</a>: <a href="http://arhiiv.err.ee/otsi/Vissenja" target="_blank" onclick="return s(this);">Vissenja</a></strong><div class="day">
 <br />Setud tähistavad ussimaarjapäevana vissenjat.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-ussimaarjapaev.php" target="_blank">BERTA</a>
 , <a href="txt/914.txt" target="_blank">j.a.e.</a>
@@ -758,7 +766,7 @@
 </div>
 
 
-<br /><br /><strong><a name="921">21.9</a>: Sügisene madisepäev</strong><div class="day">
+<br /><br /><strong><a name="921">21.9</a>: <a href="http://arhiiv.err.ee/otsi/Sügisene madisepäev" target="_blank" onclick="return s(this);">Sügisene madisepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-sugisenemadisepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/2109.htm" target="_blank">Kaarlike</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/madisepaev/madisep1.htm" target="_blank">Miksike</a>
@@ -769,17 +777,17 @@
 </div>
 
 
-<br /><br /><strong><a name="922">22.9</a>: Vastupanuvõitluse päev (1944)</strong><div class="day">
+<br /><br /><strong><a name="922">22.9</a>: <a href="http://arhiiv.err.ee/otsi/Vastupanuvõitluse päev" target="_blank" onclick="return s(this);">Vastupanuvõitluse päev (1944)</a></strong><div class="day">
 <br /><strong>*</strong> On riiklik tähtpäev.
 <br />Sügisene pööripäev on 22. või 23.09.
-<br />Viited: <a href="http://arhiiv.err.ee/vaata/koik-puhuvad-koik-puhuvad-vahur-made-vastupanuvoitluse-paev" target="_blank">ER arhiiv</a><sup> audio</sup>
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/koik-puhuvad-koik-puhuvad-vahur-made-vastupanuvoitluse-paev" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.kylauudis.ee/2011/09/22/vastupanu-pimedusele/" target="_blank">Külauudised</a>
 , <a href="http://et.wikipedia.org/wiki/Otto_Tiefi_valitsus" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#922">922</a>
 </div>
 
 
-<br /><br /><strong><a name="929">29.9</a>: Mihklipäev</strong><div class="day">
+<br /><br /><strong><a name="929">29.9</a>: <a href="http://arhiiv.err.ee/otsi/Mihklipäev" target="_blank" onclick="return s(this);">Mihklipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k929.svg" onClick="return r('Kasupäev',198,'k929.svg');" title="Vaata sirvikalendri ruuni">Kasupäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-mihklipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-1585/Kasup%C3%A4ev-Eesti-rahvakalendris" target="_blank">Bioneer</a>
@@ -803,7 +811,7 @@
 <br/><br/><h1><a name="q10">Oktoober</a></h1>
 
 
-<br /><br /><strong><a name="1014">14.10</a>: Kolletamispäev</strong><div class="day">
+<br /><br /><strong><a name="1014">14.10</a>: <a href="http://arhiiv.err.ee/otsi/Kolletamispäev" target="_blank" onclick="return s(this);">Kolletamispäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1014.svg" onClick="return r('Kolletamispäev',200,'k1014.svg');" title="Vaata sirvikalendri ruuni">Kolletamispäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-kolletamispaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-1815/RAHVAKALENDER%3A-Kolletamisp%C3%A4ev" target="_blank">Bioneer</a>
@@ -816,7 +824,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1018">18.10</a>: Luukapäev</strong><div class="day">
+<br /><br /><strong><a name="1018">18.10</a>: <a href="http://arhiiv.err.ee/otsi/Luukapäev" target="_blank" onclick="return s(this);">Luukapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.nadka.pri.ee/nadka/index.php?option=com_content&task=view&id=903" target="_blank">nadka.pri.ee</a>
 , <a href="http://www.ohtuleht.ee/129831" target="_blank">ohtuleht.ee</a>
 , <a href="txt/1018.txt" target="_blank">j.a.e.</a>
@@ -824,7 +832,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1026">26.10</a>: Midrusk</strong><div class="day">
+<br /><br /><strong><a name="1026">26.10</a>: <a href="http://arhiiv.err.ee/otsi/Midrusk" target="_blank" onclick="return s(this);">Midrusk</a></strong><div class="day">
 <br />Ka 31. oktoober.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-midruskipaev.php" target="_blank">BERTA</a>
 , <a href="http://uuseesti.ee/21840" target="_blank">Uus Eesti</a>
@@ -832,7 +840,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1028">28.10</a>: Simunapäev</strong><div class="day">
+<br /><br /><strong><a name="1028">28.10</a>: <a href="http://arhiiv.err.ee/otsi/Simunapäev" target="_blank" onclick="return s(this);">Simunapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-simunapaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?42058" target="_blank">Ilm.ee</a>
 , <a href="http://uuseesti.ee/22005" target="_blank">Uus Eesti</a>
@@ -842,17 +850,17 @@
 <br/><br/><h1><a name="q11">November</a></h1>
 
 
-<br /><br /><strong><a name="1101">1.11</a>: Pühakutepäev</strong><div class="day">
-<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-hingedeaja-puhad" target="_blank">ER arhiiv</a><sup> audio</sup>
+<br /><br /><strong><a name="1101">1.11</a>: <a href="http://arhiiv.err.ee/otsi/Pühakutepäev" target="_blank" onclick="return s(this);">Pühakutepäev</a></strong><div class="day">
+<br /><strong>*</strong> On riiklik tähtpäev.
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-hingedeaja-puhad" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/0111.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend4.html#Pyhakutep." target="_blank">Kirikupühasid</a>
 <br />ID andmebaasis: <a href="#1101">1101</a>
 </div>
 
 
-<br /><br /><strong><a name="1102">2.11</a>: Hingedepäev</strong><div class="day">
+<br /><br /><strong><a name="1102">2.11</a>: <a href="http://arhiiv.err.ee/otsi/Hingedepäev" target="_blank" onclick="return s(this);">Hingedepäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1102.svg" onClick="return r('Hingepäev',200,'k1102.svg');" title="Vaata sirvikalendri ruuni">Hingepäev</a></strong>
-<br /><strong>*</strong> On riiklik tähtpäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-hingedepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?42068" target="_blank">Ilm.ee</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/0211.htm" target="_blank">Kaarlike</a>
@@ -869,7 +877,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1110">10.11</a>: Mardipäev</strong><div class="day">
+<br /><br /><strong><a name="1110">10.11</a>: <a href="http://arhiiv.err.ee/otsi/Mardipäev" target="_blank" onclick="return s(this);">Mardipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1110.svg" onClick="return r('Mardipäev',200,'k1110.svg');" title="Vaata sirvikalendri ruuni">Mardipäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-mardipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.horisont.ee/node/1550" target="_blank">Horisont</a>
@@ -889,8 +897,7 @@
 , <a href="http://miksike.net/documents/main/lisa/pidu/mardipaev/mardipev.htm" target="_blank">Miksike 7</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/mardipaev/mardipev5.htm" target="_blank">Miksike 8</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/mardipaev/mardisandiks.htm" target="_blank">Miksike 9</a>
-, <a href="http://www.slideshare.net/margarita_stepanova/mardipaev" target="_blank">Slideshare</a>
-, <a href="http://www.slideshare.net/ylle55/mardipaev" target="_blank">Slideshare 2</a>
+, <a href="http://www.slideshare.net/ylle55/mardipaev" target="_blank">Slideshare</a>
 , <a href="http://uuseesti.ee/22881" target="_blank">Uus Eesti</a>
 , <a href="http://folklore.ee/rl/folkte/mart/mart.htm" target="_blank">folklore.ee</a>
 , <a href="http://et.wikipedia.org/wiki/Mardipäev" target="_blank">Wikipeedia</a>
@@ -898,9 +905,8 @@
 </div>
 
 
-<br /><br /><strong><a name="1116">16.11</a>: Taassünnipäev (1988)</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="1116">16.11</a>: <a href="http://arhiiv.err.ee/otsi/Taassünnipäev" target="_blank" onclick="return s(this);">Taassünnipäev (1988)</a></strong><div class="day">
+<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br />Viited: <a href="http://etv.err.ee/arhiiv.php?id=115872" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://www.estonica.org/et/Ajalugu/1985-1991_Iseseisvuse_taastamine/Murranguaastad/" target="_blank">estonica.org</a>
 , <a href="http://et.wikipedia.org/wiki/Deklaratsioon_Eesti_NSV_suveräänsusest" target="_blank">Wikipeedia</a>
@@ -908,7 +914,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1124">24.11</a>: Haneõhtu</strong><div class="day">
+<br /><br /><strong><a name="1124">24.11</a>: <a href="http://arhiiv.err.ee/otsi/Haneõhtu" target="_blank" onclick="return s(this);">Haneõhtu</a></strong><div class="day">
 <br />Maausu püha: <strong>Haneõhtu</strong>
 <br />Ka kadrilaupäev.
 <br />Viited: <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=2890" target="_blank">Maavald</a>
@@ -917,12 +923,11 @@
 </div>
 
 
-<br /><br /><strong><a name="1125">25.11</a>: Kadripäev</strong><div class="day">
+<br /><br /><strong><a name="1125">25.11</a>: <a href="http://arhiiv.err.ee/otsi/Kadripäev" target="_blank" onclick="return s(this);">Kadripäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1125.svg" onClick="return r('Lambapäev',200,'k1125.svg');" title="Vaata sirvikalendri ruuni">Lambapäev</a></strong>
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-kadripaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-2476/RAHVAKALENDER%3A-L%C3%A4ki-hane-jooksma-" target="_blank">Bioneer</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-6408/RAHVAKALENDER%3A-L%C3%A4ki-hane-jooksma" target="_blank">Bioneer 2</a>
-, <a href="http://etv.err.ee/arhiiv.php?id=100145" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://www.ilm.ee/index.php?42128" target="_blank">Ilm.ee</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/2511.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend4.html#Kadrip." target="_blank">Kirikupühasid</a>
@@ -938,7 +943,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1130">30.11</a>: Andresepäev</strong><div class="day">
+<br /><br /><strong><a name="1130">30.11</a>: <a href="http://arhiiv.err.ee/otsi/Andresepäev" target="_blank" onclick="return s(this);">Andresepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-andresepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?42139" target="_blank">Ilm.ee</a>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/3011.htm" target="_blank">Kaarlike</a>
@@ -951,7 +956,7 @@
 <br/><br/><h1><a name="q12">Detsember</a></h1>
 
 
-<br /><br /><strong><a name="1206">6.12</a>: Nigulapäev</strong><div class="day">
+<br /><br /><strong><a name="1206">6.12</a>: <a href="http://arhiiv.err.ee/otsi/Nigulapäev" target="_blank" onclick="return s(this);">Nigulapäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-detsnigulapaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend1.html#Nigulap." target="_blank">Kirikupühasid</a>
 , <a href="http://uuseesti.ee/24513" target="_blank">Uus Eesti</a>
@@ -959,7 +964,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1207">7.12</a>: Tõnnipäev</strong><div class="day">
+<br /><br /><strong><a name="1207">7.12</a>: <a href="http://arhiiv.err.ee/otsi/Tõnnipäev" target="_blank" onclick="return s(this);">Tõnnipäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1207.svg" onClick="return r('Tõnnipäev',163,'k1207.svg');" title="Vaata sirvikalendri ruuni">Tõnnipäev</a></strong>
 <br />Viited: <a href="http://et.wikipedia.org/wiki/Tõnn" target="_blank">Wikipeedia</a>
 , <a href="txt/1207.txt" target="_blank">j.a.e.</a>
@@ -967,7 +972,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1213">13.12</a>: Luutsipäev</strong><div class="day">
+<br /><br /><strong><a name="1213">13.12</a>: <a href="http://arhiiv.err.ee/otsi/Luutsipäev" target="_blank" onclick="return s(this);">Luutsipäev</a></strong><div class="day">
 <br />Ka luuts(i)napäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-luutsipaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend1.html#Luutsinap." target="_blank">Kirikupühasid</a>
@@ -976,7 +981,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1221">21.12</a>: Toomapäev</strong><div class="day">
+<br /><br /><strong><a name="1221">21.12</a>: <a href="http://arhiiv.err.ee/otsi/Toomapäev" target="_blank" onclick="return s(this);">Toomapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1221.svg" onClick="return r('Jõulud',400,'k1221.svg');" title="Vaata sirvikalendri ruuni">Jõulud</a></strong>
 <br />Ka tal(v)istepühad. Maausu jõulud: 21. - 24. jõulukuu (dets.). Talvine pööripäev on 21. või 22.12.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-toomapaev.php" target="_blank">BERTA</a>
@@ -997,12 +1002,9 @@
 </div>
 
 
-<br /><br /><strong><a name="1224">24.12</a>: Jõulud. Jõululaupäev</strong><div class="day">
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
-<br /><strong>*</strong> Eelnev tööpäev on lühendatud.
+<br /><br /><strong><a name="1224">24.12</a>: <a href="http://arhiiv.err.ee/otsi/Jõulud" target="_blank" onclick="return s(this);">Jõulud</a>.<a href="http://arhiiv.err.ee/otsi/Jõululaupäev" target="_blank" onclick="return s(this);"> Jõululaupäev</a></strong><div class="day">
 <br />Kristlikud jõulud: 24. detsember – 6.jaanuar.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-joulud.php" target="_blank">BERTA</a>
-, <a href="http://etv.err.ee/arhiiv.php?id=101082" target="_blank">ETV arhiiv</a><sup> video</sup>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_jouluaeg/rk_j6ulupuu" target="_blank">Kultuurilaegas</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_jouluaeg/rk_talu_joulud" target="_blank">Kultuurilaegas 2</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/joulud/joulud.htm" target="_blank">Miksike</a>
@@ -1022,12 +1024,11 @@
 </div>
 
 
-<br /><br /><strong><a name="1225">25.12</a>: Jõulu 1. püha</strong><div class="day">
+<br /><br /><strong><a name="1225">25.12</a>: <a href="http://arhiiv.err.ee/otsi/Jõulu 1" target="_blank" onclick="return s(this);">Jõulu 1</a>.<a href="http://arhiiv.err.ee/otsi/püha" target="_blank" onclick="return s(this);"> püha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1225.svg" onClick="return r('Ajastaja päev',133,'k1225.svg');" title="Vaata sirvikalendri ruuni">Ajastaja päev</a></strong>
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-joulud.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/bioneer/kohalik/aid-2933/RAHVAKALENDER%3A-Koos-j%C3%B5uluajaga-saabus-ka-maarahva-uus-aasta" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/reporteritund-joulud" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/reporteritund-joulud" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=&id=4818" target="_blank">Maavald</a>
 , <a href="http://www.kubik.org/ee/Estonian/articles/Joulud%20populaarse%20puha%20huvitavad%20juured.htm" target="_blank">kubik.org</a>
 , <a href="http://www.ut.ee/BGGM/eestigeol/l_m_hilisj.html" target="_blank">ut.ee</a>
@@ -1035,8 +1036,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1226">26.12</a>: Jõulu 2. püha. Tehvanipäev</strong><div class="day">
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br /><br /><strong><a name="1226">26.12</a>: <a href="http://arhiiv.err.ee/otsi/Jõulu 2" target="_blank" onclick="return s(this);">Jõulu 2</a>.<a href="http://arhiiv.err.ee/otsi/püha" target="_blank" onclick="return s(this);"> püha</a>.<a href="http://arhiiv.err.ee/otsi/Tehvanipäev" target="_blank" onclick="return s(this);"> Tehvanipäev</a></strong><div class="day">
 <br />Ka tabanipäev, tehvanusepäev, hobustepüha.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-tabanipaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend1.html#Tehvanip." target="_blank">Kirikupühasid</a>
@@ -1045,14 +1045,14 @@
 </div>
 
 
-<br /><br /><strong><a name="1227">27.12</a>: Jõulu 3. püha. Johannesepäev</strong><div class="day">
+<br /><br /><strong><a name="1227">27.12</a>: <a href="http://arhiiv.err.ee/otsi/Jõulu 3" target="_blank" onclick="return s(this);">Jõulu 3</a>.<a href="http://arhiiv.err.ee/otsi/püha" target="_blank" onclick="return s(this);"> püha</a>.<a href="http://arhiiv.err.ee/otsi/Johannesepäev" target="_blank" onclick="return s(this);"> Johannesepäev</a></strong><div class="day">
 <br />Viited: <a href="kirikukalender/kalend1.html#Johannesep." target="_blank">Kirikupühasid</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/johannesepaev.php" target="_blank">Kristlik kultuur</a>
 <br />ID andmebaasis: <a href="#1227">1227</a>
 </div>
 
 
-<br /><br /><strong><a name="1228">28.12</a>: Süütalastepäev</strong><div class="day">
+<br /><br /><strong><a name="1228">28.12</a>: <a href="http://arhiiv.err.ee/otsi/Süütalastepäev" target="_blank" onclick="return s(this);">Süütalastepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-suutlastepaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend1.html#Syytalastep." target="_blank">Kirikupühasid</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/syystapaev.php" target="_blank">Kristlik kultuur</a>
@@ -1062,7 +1062,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1231">31.12</a>: Näärid</strong><div class="day">
+<br /><br /><strong><a name="1231">31.12</a>: <a href="http://arhiiv.err.ee/otsi/Näärid" target="_blank" onclick="return s(this);">Näärid</a></strong><div class="day">
 <br />31. detsember - 1. jaanuar.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-naaripaev.php" target="_blank">BERTA</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_jouluaeg/rk_vana_aasta" target="_blank">Kultuurilaegas</a>
@@ -1075,7 +1075,7 @@
 <br/><br/><h1><a name="munapyhad">Liikuvad usupühad: munapühad</a></h1>
 
 
-<br /><br /><strong><a name="1953">-47 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Vastlapäev</strong><div class="day">
+<br /><br /><strong><a name="1953">-47 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Vastlapäev" target="_blank" onclick="return s(this);">Vastlapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/lm47.svg" onClick="return r('Kihlakud: liugupäev',209,'lm47.svg');" title="Vaata sirvikalendri ruuni">Kihlakud: liugupäev</a></strong>
 <br/><a href="ruunid.html#2">Teisipäev</a>.<br />Ka lihaheitepäev, pudrupäev Lõuna-Eestis, liupäev Kirde-Eestis.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-vastlapaev.php" target="_blank">BERTA</a>
@@ -1096,7 +1096,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1954">-46 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Tuhkapäev</strong><div class="day">
+<br /><br /><strong><a name="1954">-46 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Tuhkapäev" target="_blank" onclick="return s(this);">Tuhkapäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/lm47.svg" onClick="return r('Kihlakud: tuhkapäev',209,'lm47.svg');" title="Vaata sirvikalendri ruuni">Kihlakud: tuhkapäev</a></strong>
 <br/><a href="ruunid.html#3">Kolmapäev</a>.<br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-tuhkapaev.php" target="_blank">BERTA</a>
 , <a href="kirikukalender/kalend2.html#Tuhkap." target="_blank">Kirikupühasid</a>
@@ -1108,14 +1108,14 @@
 </div>
 
 
-<br /><br /><strong><a name="1961">-39 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Palvepäev</strong><div class="day">
+<br /><br /><strong><a name="1961">-39 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Palvepäev" target="_blank" onclick="return s(this);">Palvepäev</a></strong><div class="day">
 <br/><a href="ruunid.html#3">Kolmapäev</a>.<br />Viited: <a href="kirikukalender/kalend2.html#Palvep." target="_blank">Kirikupühasid</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/teised/patukahetsuspev.htm" target="_blank">Miksike</a>
 <br />ID andmebaasis: <a href="#1961">1961</a>
 </div>
 
 
-<br /><br /><strong><a name="1975">-25 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Eidepäev</strong><div class="day">
+<br /><br /><strong><a name="1975">-25 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Eidepäev" target="_blank" onclick="return s(this);">Eidepäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k1225.svg" onClick="return r('Eidepäev',133,'k1225.svg');" title="Vaata sirvikalendri ruuni">Eidepäev</a></strong>
 <br/><a href="ruunid.html#3">Kolmapäev</a>.<br />Ka paapapäiv ja naiste päev, Seto naiste püha.
 <br />Viited: <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=463" target="_blank">Maavald</a>
@@ -1123,12 +1123,12 @@
 </div>
 
 
-<br /><br /><strong><a name="1993">-7 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Palmipuudepüha</strong><div class="day">
+<br /><br /><strong><a name="1993">-7 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Palmipuudepüha" target="_blank" onclick="return s(this);">Palmipuudepüha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/lm7.svg" onClick="return r('Urbepäev',200,'lm7.svg');" title="Vaata sirvikalendri ruuni">Urbepäev</a></strong>
 <br/><a href="ruunid.html#0">Pühapäev</a>.<br />Vaikse nädala algus.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-urbepaev.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-4098/RAHVAKALENDER%3A-P%C3%BChap%C3%A4eval-on-urbep%C3%A4ev" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-palmipuudepuha-ja-vaikne-nadal" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-palmipuudepuha-ja-vaikne-nadal" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/0504.htm" target="_blank">Kaarlike</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/palmipuude.php" target="_blank">Kristlik kultuur</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_urvad_sulle" target="_blank">Kultuurilaegas</a>
@@ -1145,7 +1145,7 @@
 </div>
 
 
-<br /><br /><strong><a name="1997">-3 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Suur Neljapäev</strong><div class="day">
+<br /><br /><strong><a name="1997">-3 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Suur Neljapäev" target="_blank" onclick="return s(this);">Suur Neljapäev</a></strong><div class="day">
 <br/><a href="ruunid.html#4">Neljapäev</a>.<br />Marimaal munapüha.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-suurneljapaev.php" target="_blank">BERTA</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/suurneljapaev.php" target="_blank">Kristlik kultuur</a>
@@ -1156,21 +1156,19 @@
 </div>
 
 
-<br /><br /><strong><a name="1998">-2 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Suur Reede</strong><div class="day">
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
+<br /><br /><strong><a name="1998">-2 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Suur Reede" target="_blank" onclick="return s(this);">Suur Reede</a></strong><div class="day">
 <br/><a href="ruunid.html#5">Reede</a>.<br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-suurreedepaev.php" target="_blank">BERTA</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/suurreede.php" target="_blank">Kristlik kultuur</a>
 <br />ID andmebaasis: <a href="#1998">1998</a>
 </div>
 
 
-<br /><br /><strong><a name="2000">0 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: 1. Ülestõusmispüha</strong><div class="day">
+<br /><br /><strong><a name="2000">0 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/1" target="_blank" onclick="return s(this);">1</a>.<a href="http://arhiiv.err.ee/otsi/Ülestõusmispüha" target="_blank" onclick="return s(this);"> Ülestõusmispüha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/l0.svg" onClick="return r('Munapüha',181,'l0.svg');" title="Vaata sirvikalendri ruuni">Munapüha</a></strong>
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br/><a href="ruunid.html#0">Pühapäev</a>.<br />Ka lihavõttepühad, kevadpühad, kiigepühad.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-lihavotted.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-4209/RAHVAKALENDER%3A-Kevadp%C3%BChad" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-262-ulestousmispuhad" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/eesti-lugu-eesti-lugu-262-ulestousmispuhad" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_pyhademunad" target="_blank">Kultuurilaegas</a>
 , <a href="http://www.folk.ee/kultuurilaegas/et/aa_index/rk_tahtpaevad/rk_kevad/rk_pyhademunad/rk_rituaalne_tants" target="_blank">Kultuurilaegas 2</a>
 , <a href="http://www.kylauudis.ee/2011/04/23/homne-puha-toob-tervist-ja-roomu/" target="_blank">Külauudised</a>
@@ -1190,7 +1188,7 @@
 </div>
 
 
-<br /><br /><strong><a name="2018">18 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Tuuleristipäev</strong><div class="day">
+<br /><br /><strong><a name="2018">18 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Tuuleristipäev" target="_blank" onclick="return s(this);">Tuuleristipäev</a></strong><div class="day">
 <br/><a href="ruunid.html#4">Neljapäev</a>.<br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-tuuleristipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.kylauudis.ee/2011/05/12/tana-on-tuuleristipaev/" target="_blank">Külauudised</a>
 , <a href="http://naistekas.delfi.ee/kirevmaailm/uudised/tuuleristipaeval-vaibub-kulm-tuul.d?id=18525869" target="_blank">naistekas.delfi.ee</a>
@@ -1198,20 +1196,20 @@
 </div>
 
 
-<br /><br /><strong><a name="2025">25 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Linnuristipäev</strong><div class="day">
+<br /><br /><strong><a name="2025">25 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Linnuristipäev" target="_blank" onclick="return s(this);">Linnuristipäev</a></strong><div class="day">
 <br/><a href="ruunid.html#4">Neljapäev</a>.<br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-linnuristipaev.php" target="_blank">BERTA</a>
 , <a href="http://www.ilm.ee/index.php?48865" target="_blank">Ilm.ee</a>
 <br />ID andmebaasis: <a href="#2025">2025</a>
 </div>
 
 
-<br /><br /><strong><a name="2032">32 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Leheristipäev</strong><div class="day">
+<br /><br /><strong><a name="2032">32 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Leheristipäev" target="_blank" onclick="return s(this);">Leheristipäev</a></strong><div class="day">
 <br/><a href="ruunid.html#4">Neljapäev</a>.<br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-leheristipaev.php" target="_blank">BERTA</a>
 <br />ID andmebaasis: <a href="#2032">2032</a>
 </div>
 
 
-<br /><br /><strong><a name="2039">39 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Taevaminemisepüha</strong><div class="day">
+<br /><br /><strong><a name="2039">39 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Taevaminemisepüha" target="_blank" onclick="return s(this);">Taevaminemisepüha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/n4.svg" onClick="return r('Maahengaus',40,'n4.svg');" title="Vaata sirvikalendri ruuni">Maahengaus</a></strong>
 <br/><a href="ruunid.html#4">Neljapäev</a>.<br />Ka ristipäev.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-ristipaev.php" target="_blank">BERTA</a>
@@ -1227,13 +1225,12 @@
 </div>
 
 
-<br /><br /><strong><a name="2049">49 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: 1. Nelipüha</strong><div class="day">
+<br /><br /><strong><a name="2049">49 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/1" target="_blank" onclick="return s(this);">1</a>.<a href="http://arhiiv.err.ee/otsi/Nelipüha" target="_blank" onclick="return s(this);"> Nelipüha</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/lp49.svg" onClick="return r('Suvisted',200,'lp49.svg');" title="Vaata sirvikalendri ruuni">Suvisted</a></strong>
-<br /><strong><font color="red">*</font></strong> On riigipüha ja puhkepäev.
 <br/><a href="ruunid.html#0">Pühapäev</a>.<br />Ka suvistepühad, kasepühad.
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-nelipuhad.php" target="_blank">BERTA</a>
 , <a href="http://www.bioneer.ee/eluviis/ilu/aid-4748/RAHVAKALENDER%3A-Homme-on-suvistelaup%C3%A4ev" target="_blank">Bioneer</a>
-, <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-nelipuha" target="_blank">ER arhiiv</a><sup> audio</sup>
+, <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-nelipuha" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/3105.htm" target="_blank">Kaarlike</a>
 , <a href="http://kristlus.varstukk.edu.ee/kristlikkultuur/lingid/nelipyha.php" target="_blank">Kristlik kultuur</a>
 , <a href="http://www.kylauudis.ee/2011/06/12/tana-on-esimene-suvistepuha/" target="_blank">Külauudised</a>
@@ -1246,24 +1243,26 @@
 </div>
 
 
-<br /><br /><strong><a name="2056">56 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: Kolmainu Jumala püha</strong><div class="day">
+<br /><br /><strong><a name="2056">56 <a href="#2000" title="päeva 1. Ülestõusmispühast">p1Ü</a></a>: <a href="http://arhiiv.err.ee/otsi/Kolmainu Jumala püha" target="_blank" onclick="return s(this);">Kolmainu Jumala püha</a></strong><div class="day">
 <br/><a href="ruunid.html#0">Pühapäev</a>.<br />Viited: <a href="txt/2056.txt" target="_blank">j.a.e.</a>
 <br />ID andmebaasis: <a href="#2056">2056</a>
 </div>
 <br/><br/><h1><a name="advent">Liikuvad usupühad: advent</a></h1>
 
 
-<br /><br /><strong><a name="3040">4. <a href="ruunid.html#0">pühapäev</a> <a href="#1225" title="enne 1. Jõulupüha">e1J</a></a>: 1. Advent</strong><div class="day">
-<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-advendi-ja-jouluaeg" target="_blank">ER arhiiv</a><sup> audio</sup>
+<br /><br /><strong><a name="3040">4. <a href="ruunid.html#0">pühapäev</a> <a href="#1225" title="enne 1. Jõulupüha">e1J</a></a>: <a href="http://arhiiv.err.ee/otsi/1" target="_blank" onclick="return s(this);">1</a>.<a href="http://arhiiv.err.ee/otsi/Advent" target="_blank" onclick="return s(this);"> Advent</a></strong><div class="day">
+<br /><strong>*</strong> On riiklik tähtpäev.
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-advendi-ja-jouluaeg" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="kirikukalender/kalend1.html#Advent" target="_blank">Kirikupühasid</a>
 , <a href="http://et.wikipedia.org/wiki/Advent" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#3040">3040</a>
 </div>
 
 
-<br /><br /><strong><a name="3050">5. <a href="ruunid.html#0">pühapäev</a> <a href="#1225" title="enne 1. Jõulupüha">e1J</a></a>: Surnutepüha</strong><div class="day">
+<br /><br /><strong><a name="3050">5. <a href="ruunid.html#0">pühapäev</a> <a href="#1225" title="enne 1. Jõulupüha">e1J</a></a>: <a href="http://arhiiv.err.ee/otsi/Surnutepüha" target="_blank" onclick="return s(this);">Surnutepüha</a></strong><div class="day">
+<br /><strong>*</strong> On riiklik tähtpäev.
 <br />Ka surnutemälestuspüha, igavikupühapäev.
-<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-igavikupuhapaev-surnutemalestuspuha-meelis-suld" target="_blank">ER arhiiv</a><sup> audio</sup>
+<br />Viited: <a href="http://arhiiv.err.ee/vaata/kirikuelu-kirikuelu-igavikupuhapaev-surnutemalestuspuha-meelis-suld" target="_blank">ERR arhiiv</a><sup> audio</sup>
 , <a href="http://www.eelk.ee/~kkaarlike/kuupaev/2411.htm" target="_blank">Kaarlike</a>
 , <a href="kirikukalender/kalend4.html#Surnutep." target="_blank">Kirikupühasid</a>
 <br />ID andmebaasis: <a href="#3050">3050</a>
@@ -1271,9 +1270,7 @@
 <br/><br/><h1><a name="liikuvad">Muud liikuvad tähtpäevad</a></h1>
 
 
-<br /><br /><strong><a name="10520">Mai 2. <a href="ruunid.html#0">pühapäev</a></a>: Emadepäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="10520">Mai 2. <a href="ruunid.html#0">pühapäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Emadepäev" target="_blank" onclick="return s(this);">Emadepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-emadepaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/emadepaev/emadepev1.htm" target="_blank">Miksike</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/emadepaev/emadepev2.htm" target="_blank">Miksike 2</a>
@@ -1282,7 +1279,7 @@
 </div>
 
 
-<br /><br /><strong><a name="10856">Augusti viimane <a href="ruunid.html#6">laupäev</a></a>: Muinastulede öö</strong><div class="day">
+<br /><br /><strong><a name="10856">Augusti viimane <a href="ruunid.html#6">laupäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Muinastulede öö" target="_blank" onclick="return s(this);">Muinastulede öö</a></strong><div class="day">
 <br />Viited: <a href="http://www.bioneer.ee/bioneer/kohalik/aid-8762/Tule-mere-%C3%A4%C3%A4rde-Muinastulede-%C3%B6%C3%B6d-veetma" target="_blank">Bioneer</a>
 , <a href="http://muinastuled.ee/et" target="_blank">muinastuled.ee</a>
 , <a href="http://et.wikipedia.org/wiki/Muinastulede_%C3%B6%C3%B6" target="_blank">Wikipeedia</a>
@@ -1290,15 +1287,14 @@
 </div>
 
 
-<br /><br /><strong><a name="10920">Septembri 2. <a href="ruunid.html#0">pühapäev</a></a>: Vanavanemate päev</strong><div class="day">
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="10920">Septembri 2. <a href="ruunid.html#0">pühapäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Vanavanemate päev" target="_blank" onclick="return s(this);">Vanavanemate päev</a></strong><div class="day">
 <br />Viited: <a href="http://www.delfi.ee/news/paevauudised/eesti/ansip-vanavanemate-paev-on-austusavaldus.d?id=33103667" target="_blank">delfi.ee</a>
 , <a href="http://et.wikipedia.org/wiki/Vanavanemate_päev" target="_blank">Wikipeedia</a>
 <br />ID andmebaasis: <a href="#10920">10920</a>
 </div>
 
 
-<br /><br /><strong><a name="10930">Septembri 3. <a href="ruunid.html#0">pühapäev</a></a>: Pekopäev</strong><div class="day">
+<br /><br /><strong><a name="10930">Septembri 3. <a href="ruunid.html#0">pühapäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Pekopäev" target="_blank" onclick="return s(this);">Pekopäev</a></strong><div class="day">
 <br />Maausu püha: <strong><a target="_blank" href="svg/k9p3.svg" onClick="return r('Pekopäev',263,'k9p3.svg');" title="Vaata sirvikalendri ruuni">Pekopäev</a></strong>
 <br />Viited: <a href="http://ninjarefer.com/?http://maavald.ee/maausk.html?op=lugu&rubriik=61&id=1267" target="_blank">Maavald</a>
 , <a href="http://et.wikipedia.org/wiki/Peko" target="_blank">Wikipeedia</a>
@@ -1306,18 +1302,14 @@
 </div>
 
 
-<br /><br /><strong><a name="11036">Oktoobri 3. <a href="ruunid.html#6">laupäev</a></a>: Hõimupäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="11036">Oktoobri 3. <a href="ruunid.html#6">laupäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Hõimupäev" target="_blank" onclick="return s(this);">Hõimupäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.maaleht.ee/news/uudised/eestiuudised/tulekul-on-uus-riiklik-tahtpaev-hoimupaev.d?id=40367642" target="_blank">maaleht.ee</a>
 , <a href="http://www.postimees.ee/390024/hoimupaev-sai-riiklikuks-tahtpaevaks/" target="_blank">postimees.ee</a>
 <br />ID andmebaasis: <a href="#11036">11036</a>
 </div>
 
 
-<br /><br /><strong><a name="11120">Novembri 2. <a href="ruunid.html#0">pühapäev</a></a>: Isadepäev</strong><div class="day">
-<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> On lipu(heiskamis)päev.
-<br /><strong>*</strong> On riiklik tähtpäev.
+<br /><br /><strong><a name="11120">Novembri 2. <a href="ruunid.html#0">pühapäev</a></a>: <a href="http://arhiiv.err.ee/otsi/Isadepäev" target="_blank" onclick="return s(this);">Isadepäev</a></strong><div class="day">
 <br />Viited: <a href="http://www.folklore.ee/Berta/tahtpaev-isadepaev.php" target="_blank">BERTA</a>
 , <a href="http://miksike.net/documents/main/lisa/pidu/isadepaev/isadepev2.htm" target="_blank">Miksike</a>
 , <a href="http://www.terviseleht.ee/200041/41_isadep2ev.php" target="_blank">terviseleht.ee</a>
@@ -1328,8 +1320,8 @@
 <br/><br/><br/><h1><a name="allikad">Peamised allikad ja viited</a></h1><ol>
 <li>BERTA (78):   <a href="http://www.folklore.ee/Berta/kalender.php">http://www.folklore.ee/Berta/kalender.php</a></li>
 <li>Bioneer (41):   <a href="http://www.bioneer.ee/search/?keyword=rahvakalender">http://www.bioneer.ee/search/?keyword=rahvakalender</a></li>
-<li>ER arhiiv (14):   <a href="http://arhiiv.err.ee/err-audioarhiiv">http://arhiiv.err.ee/err-audioarhiiv</a></li>
-<li>ETV arhiiv (13):   <a href="http://etv.err.ee/arhiiv.php">http://etv.err.ee/arhiiv.php</a></li>
+<li>ERR arhiiv (18):   <a href="http://arhiiv.err.ee/">http://arhiiv.err.ee/</a></li>
+<li>ETV arhiiv (9):   <a href="http://etv.err.ee/arhiiv.php">http://etv.err.ee/arhiiv.php</a></li>
 <li>Horisont (6):   <a href="http://www.horisont.ee">http://www.horisont.ee</a></li>
 <li>Ilm.ee (19):   <a href="http://www.ilm.ee/index.php?41783">http://www.ilm.ee/index.php?41783</a></li>
 <li>Kaarlike (22):   <a href="http://www.eelk.ee/~kkaarlike/kalender.htm">http://www.eelk.ee/~kkaarlike/kalender.htm</a></li>
@@ -1339,13 +1331,13 @@
 <li>Külauudised (9):   <a href="http://www.kylauudis.ee/tag/rahvakalender/">http://www.kylauudis.ee/tag/rahvakalender/</a></li>
 <li>Maavald (64):   <a href="http://maavald.ee/maausk.html?op=rubriik&rubriik=61">http://maavald.ee/maausk.html?op=rubriik&rubriik=61</a></li>
 <li>Miksike (111):   <a href="http://miksike.net/documents/main/lisa/pidu/tahtpevad.htm">http://miksike.net/documents/main/lisa/pidu/tahtpevad.htm</a></li>
-<li>Slideshare (6):   <a href="http://www.slideshare.net/">http://www.slideshare.net/</a></li>
-<li>Uus Eesti (35):   <a href="http://uuseesti.ee/teema/kultuur/rahvakalender">http://uuseesti.ee/teema/kultuur/rahvakalender</a></li>
-<li>WWW (35)</li>
+<li>Slideshare (5):   <a href="http://www.slideshare.net/">http://www.slideshare.net/</a></li>
+<li>Uus Eesti (34):   <a href="http://uuseesti.ee/teema/kultuur/rahvakalender">http://uuseesti.ee/teema/kultuur/rahvakalender</a></li>
+<li>WWW (35):   <a href=""></a></li>
 <li>Wikipeedia (70):   <a href="http://et.wikipedia.org/wiki/Esileht">http://et.wikipedia.org/wiki/Esileht</a></li>
 <li>j.a.e. (7):   <a href="http://juks.alkohol.ee/tools/kalender/txt/">http://juks.alkohol.ee/tools/kalender/txt/</a></li>
 </ol><br/>
-<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-01-04 19:24:45.<br/><br/><center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<strong>Tähtpäevad</strong>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<a href="abi.html">Abilehekülg</a>.</center>
+<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-05-24 09:45:09.<br/><br/><center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<strong>Tähtpäevad</strong>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<a href="abi.html">Abilehekülg</a>.</center>
 </div>
 
 </body>

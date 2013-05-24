@@ -31,6 +31,7 @@
      <li><a href="#bitmap">Bitmapid</a>
         <ol>
 <li><a href="#bitmap.events.flags">events.flags<a></li>
+<li><a href="#bitmap.urls.flags">urls.flags<a></li>
         </ol>
      </li>
    </ol> 
@@ -79,7 +80,7 @@ Samuti ei suuda siinkasutatud <a href="tahtpaevad.html#2000">munapüha</a> leidm
 
 <h1><a name="ab">Andmebaas</a></h1>
 
-on 43 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
+on 44 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
 
 Eeldusel et igal tähtpäeval on vähemalt 1 link tabelis urls, oleks lihtne päring kõigi andmete kättesaamiseks:
 <blockquote><pre>
@@ -317,6 +318,12 @@ Lingid mingile tähtpäevale.<br/><br/>
     <td></td>
 </tr>
 <tr>
+    <td valign="top"><a name="tabel.urls.flags">flags</a></td>
+    <td valign="top">NUMERIC</td>
+    <td valign="top"> </td>
+    <td>Bitmap <a href="#bitmap.urls.flags">urls.flags</a></td>
+</tr>
+<tr>
     <td valign="top"><a name="tabel.urls.http_status">http_status</a></td>
     <td valign="top">NUMERIC</td>
     <td valign="top"> </td>
@@ -327,12 +334,6 @@ Lingid mingile tähtpäevale.<br/><br/>
     <td valign="top">INTEGER PRIMARY KEY</td>
     <td valign="top">Esmasvõti</td>
     <td> </td>
-</tr>
-<tr>
-    <td valign="top"><a name="tabel.urls.res_type">res_type</a></td>
-    <td valign="top">TEXT</td>
-    <td valign="top"> </td>
-    <td>A = audio; V = video </td>
 </tr>
 <tr>
     <td valign="top"><a name="tabel.urls.url">url</a></td>
@@ -384,13 +385,29 @@ Lingid mingile tähtpäevale.<br/><br/>
     <td>Selle päevale eelneb lühendatud  tööpäev.</td>
 </tr>
 </table>
+<h3><a name="bitmap.urls.flags">Bitmap urls.flags</a></h3>
+<table>
+<tr><th>Biti koht</th><th>Väärtus</th><th>Nimi</th><th>Tähendus</th></tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.urls.flags.urls.flags">0</a></td>
+    <td valign="top" align="right">1</td>
+    <td valign="top">audio</td>
+    <td>Sellel leheküljel on kuulatav audiofail.</td>
+</tr>
+<tr>
+    <td valign="top" align="right"><a name="bitmap.urls.flags.urls.flags">1</a></td>
+    <td valign="top" align="right">2</td>
+    <td valign="top">video</td>
+    <td>Sellel leheküljel on vaadatav videoklipp.</td>
+</tr>
+</table>
 
 <h1><a name="repo">GitHub</a></h1>
 
 <a href="https://github.com/l6gistaja/kalender">https://github.com/l6gistaja/kalender</a>
 
 <br/><br/>
-Viimati uuendatud 2013-01-04 19:24:45.
+Viimati uuendatud 2013-05-24 09:45:09.
 <br/><br/>
 <center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 

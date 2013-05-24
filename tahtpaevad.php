@@ -16,6 +16,7 @@ echo '</center>';
 $mall_abid = '<br />ID andmebaasis: <a href="#{abid}">{abid}</a>'."\n";
 $eid = -1;
 $linkno = 0;
+$main_searchsite = 'http://arhiiv.err.ee/otsi/';
 
 $index = array(
     array(
@@ -66,7 +67,42 @@ for($i=0; $i<count($index); $i++) {
   }
 }
 echo '</ol>'. "\n";
+?>
 
+<script type="text/javascript">
+
+    var searchConf = {
+        main_searchsite : '<?php echo $main_searchsite; ?>',
+        choices : [
+            { urlPrefix : '<?php echo $main_searchsite; ?>', site: 'ERR arhiiv' },
+            { urlPrefix : 'http://www.google.ee/search?q=', site: 'Google' }
+        ]
+    }
+    
+    document.writeln('<strong>Vali otsingusait : </strong><select id="searchsite">');
+    for(i=0;i<searchConf.choices.length;i++) {
+        document.writeln('<option'
+            + (searchConf.choices[i].urlPrefix==searchConf.main_searchsite ?' selected="selected"':'')
+            + '>' + searchConf.choices[i].site + '</option>');
+    }
+    document.writeln('</select>');
+    
+    function s(link) {
+         selector = document.getElementById("searchsite");
+         i = selector.selectedIndex;
+         if(searchConf.choices[i].urlPrefix == searchConf.main_searchsite) {
+            return true;
+         } else {
+            location.href = searchConf.choices[i].urlPrefix
+                + link.href.substr(searchConf.main_searchsite.length);
+            return false;
+         }
+    }
+    
+    
+</script>
+
+<?php 
 $urlcategory0 = '';
 $paragraph = 0;
 
@@ -103,7 +139,7 @@ foreach ($dbh->query($sql) as $row) {
 				break;
 			}
 		} 
-		
+
 	if($index[$paragraph]['a_el'] == $row['id']) {
 	  echo '<br/><br/><h1><a name="'.$index[$paragraph]['a'].'">'.$index[$paragraph]['i8n'].'</a></h1>'. "\n";
 	  $paragraph ++;
@@ -153,13 +189,25 @@ foreach ($dbh->query($sql) as $row) {
 	    
 	else { $event_time = "Teadmata toimumisajaga : " . $row['id']; }
 	
-	
+	    
+        $event_name = trim($row['event']) != '' ? $row['event'] : $row['maausk'];
+        $event_name_a0 = explode('.',$event_name);
+        $event_name_a1 = array();
+        foreach($event_name_a0 as $event_name_el) {
+            $event_name_a1[] = '<a href="'
+                .$main_searchsite
+                .trim(preg_replace('/\(\d+\)/','',$event_name_el))
+                .'" target="_blank" onclick="return s(this);">'
+                .$event_name_el
+                .'</a>';
+        }
+        
         echo  "\n" . "\n" . '<br /><br /><strong><a name="' .
             $row['id'] . '">' .
             $event_time .
             '</a>'.
 			($event_time == '' ? '' : ': ' ).
-             ( trim($row['event']) != '' ? $row['event'] : $row['maausk'] ) .
+             implode('.',$event_name_a1).
             '</strong><div class="day">' . "\n";
 
 	if(trim($row['maausk']) != '') {
@@ -242,12 +290,12 @@ echo str_replace('{abid}',$eid,$mall_abid);
 echo '<br/><br/><br/><h1><a name="allikad">Peamised allikad ja viited</a></h1><ol>'."\n";
 
 foreach ($dbh->query(
-  "SELECT c.urlcategory, c.site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id"
+  "SELECT c.urlcategory as c_urlcategory, c.site as c_site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id"
   ." AND c.http_status = 200" //surnud linkide filter
   ." GROUP BY c.id ORDER BY c.urlcategory"
 ) as $src) {
-  echo '<li>'.$src['urlcategory'].' ('.$src['ucc'].')'
-  .( $src['id'] != '0' ? ':   <a href="'.$src['site'].'">'.$src['site'].'</a>' : '')
+  echo '<li>'.$src['c_urlcategory'].' ('.$src['ucc'].')'
+  .( $src['id'] != '0' ? ':   <a href="'.$src['c_site'].'">'.$src['c_site'].'</a>' : '')
   .'</li>'."\n";
   //echo '<li>'."\n";print_r($src);echo '</li>'."\n";
 }

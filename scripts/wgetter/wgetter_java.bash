@@ -5,7 +5,7 @@
 # 2) set $baseurl below
 # 3) run current script (in directory scripts/wgetter/)
 
-baseurl="http://juks.alkohol.ee/etc/trash/kalender"
+baseurl="http://localhost/kalender"
 javadir="sirvid" 
 
 rm -rf ${javadir}/

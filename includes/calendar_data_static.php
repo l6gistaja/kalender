@@ -160,7 +160,7 @@ $calendardata = array (
     ),
     202 => 
     array (
-      'n' => 'Küünlapäev. Tartu rahu (1920) aastapäev; Pudrupäev',
+      'n' => 'Küünlapäev. Tartu rahu (1920); Pudrupäev',
       'l' => 1,
     ),
     209 => 
@@ -256,7 +256,7 @@ $calendardata = array (
     ),
     614 => 
     array (
-      'n' => 'Juuniküüditamise (1941) leinapäev',
+      'n' => 'Juuniküüditamine (1941)',
       'l' => 1,
     ),
     615 => 
@@ -589,5 +589,5 @@ $calendardata = array (
       'n' => 'Liigpäev',
     ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-01-04 19:24:45',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-05-24 09:45:09',
 );

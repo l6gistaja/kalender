@@ -8,7 +8,7 @@
 # 5) in $baseurl web_init.php, set $init_data['dynamic'] = false, so newly
 #    overwritten static files will be used
 
-baseurl="http://juks.alkohol.ee/etc/trash/kalender"
+baseurl="http://localhost/kalender"
 
 wget ${baseurl}/ruunid.php
 mv -f ruunid.php ../../ruunid.html
