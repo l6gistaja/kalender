@@ -235,7 +235,7 @@ foreach($tablenames as $tablename) {
 			
         }
         
-        if($init_bitmaps[$tablename.'.'.$row['column_name']]) {
+        if(in_array($tablename.'.'.$row['column_name'], $bitmaps)) {
             $row['description'] = 'Bitmap <a href="#bitmap.'.$tablename.'.'.$row['column_name'].'">'.$tablename.'.'.$row['column_name'].'</a>'.$row['description'];
         }
         

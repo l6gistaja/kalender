@@ -70,7 +70,7 @@ echo '</ol>'. "\n";
 $urlcategory0 = '';
 $paragraph = 0;
 
-$sql = "SELECT e.*, u.urlcategory_id, u.url, u.res_type, c.urlcategory, c.urlprefix"
+$sql = "SELECT e.*, u.urlcategory_id, u.url, u.flags, c.urlcategory, c.urlprefix"
   ." FROM events e, urls u, urlcategories c"
   ." WHERE e.id = u.event_id AND u.urlcategory_id = c.id"
   //." AND e.maausk IS NOT NULL AND e.maausk <> ''" //maausu filter
@@ -215,8 +215,8 @@ foreach ($dbh->query($sql) as $row) {
     $urlcategory0 = $urlcategory1;
 	
     $restype = '';
-    if(strtoupper($row['res_type'])=='A') { $restype = '<sup> audio</sup>'; }
-    if(strtoupper($row['res_type'])=='V') { $restype = '<sup> video</sup>'; }
+    if($row['flags'] %2 == 1) { $restype = '<sup> audio</sup>'; }
+    if(($row['flags'] >> 1) %2 == 1) { $restype = '<sup> video</sup>'; }
        
     echo ($linkno ? ', ' : '<br />Viited: ')
         . '<a href="' . $row['urlprefix'] . $row['url'] . '" target="_blank">' 
