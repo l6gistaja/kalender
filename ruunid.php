@@ -106,8 +106,8 @@ foreach ($dbh->query("SELECT r.*, e.event, e.maausk, e.more FROM runes r, events
     .$weekdayevents
     .$doublerunes
     
-    ."<br/>\nSVG: "
-    .'<a href="svg/'.$row['filename'].'">'
+    ."<br/>\nRuun: "
+    .'<a href="svg/'.$row['filename'].'" target="_blank">'
     .$row['filename']
     ."</a>"
     
