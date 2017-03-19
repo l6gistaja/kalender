@@ -89,6 +89,9 @@ $calendardata = array (
     81 => 1124,
     82 => 206,
     83 => 229,
+    84 => 512,
+    85 => 1029,
+    86 => 1126,
   ),
   'y' => 
   array (
@@ -106,6 +109,7 @@ $calendardata = array (
     11 => 2049,
     12 => 2056,
     13 => 1975,
+    14 => 2060,
   ),
   'a' => 
   array (
@@ -436,17 +440,17 @@ $calendardata = array (
     ),
     1225 => 
     array (
-      'n' => 'Jõulu 1. püha; Ajastaja päev',
+      'n' => 'Jõulu esimene püha; Ajastaja päev',
       'f' => 1,
     ),
     1226 => 
     array (
-      'n' => 'Jõulu 2. püha. Tehvanipäev',
+      'n' => 'Jõulu teine püha. Tehvanipäev',
       'f' => 1,
     ),
     1227 => 
     array (
-      'n' => 'Jõulu 3. püha. Johannesepäev',
+      'n' => 'Jõulu kolmas püha. Johannesepäev',
     ),
     1228 => 
     array (
@@ -528,7 +532,7 @@ $calendardata = array (
     ),
     2000 => 
     array (
-      'n' => '1. Ülestõusmispüha; Munapüha',
+      'n' => 'Esimene ülestõusmispüha; Munapüha',
       'f' => 1,
     ),
     2018 => 
@@ -549,7 +553,7 @@ $calendardata = array (
     ),
     2049 => 
     array (
-      'n' => '1. Nelipüha; Suvisted',
+      'n' => 'Esimene nelipüha; Suvisted',
       'f' => 1,
     ),
     2056 => 
@@ -562,7 +566,7 @@ $calendardata = array (
     ),
     3040 => 
     array (
-      'n' => '1. Advent',
+      'n' => 'Esimene advent',
     ),
     1975 => 
     array (
@@ -588,6 +592,22 @@ $calendardata = array (
     array (
       'n' => 'Liigpäev',
     ),
+    512 => 
+    array (
+      'n' => 'Räüsäpäev',
+    ),
+    2060 => 
+    array (
+      'n' => 'Lujapäev',
+    ),
+    1029 => 
+    array (
+      'n' => 'Nahtsipäev',
+    ),
+    1126 => 
+    array (
+      'n' => 'Talvine jüripäev',
+    ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2013-05-24 09:45:09',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2017-03-19 04:10:02',
 );

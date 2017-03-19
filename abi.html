@@ -11,7 +11,7 @@
 
 <div class="bodydiv">
 
-<center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
+<center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.php">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.php">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 
 <h1><a name="sisukord">Sisukord</a></h1><ol>
 <li><a href="#t2histused">Tähtpäevade tähistused</a></li>
@@ -44,13 +44,13 @@
 <table>
 <tr><th>Sümbol</th><th>T&auml;hendus</th></tr>
 
-<tr><td>+</td><td><a href="tahtpaevad.html#munapyhad">Munapühade</a> või <a href="tahtpaevad.html#advent">advendiga</a> seotud liikuvad kirikupühad.</td></tr>
+<tr><td>+</td><td><a href="tahtpaevad.php#munapyhad">Munapühade</a> või <a href="tahtpaevad.php#advent">advendiga</a> seotud liikuvad kirikupühad.</td></tr>
 
-<tr><td>X</td><td><a href="tahtpaevad.html#liikuvad">Muud liikuvad tähtpäevad</a>, X on tähtpäeva esitäht.</td></tr>
+<tr><td>X</td><td><a href="tahtpaevad.php#liikuvad">Muud liikuvad tähtpäevad</a>, X on tähtpäeva esitäht.</td></tr>
 
 <tr><td><strong style="color:red; font-family:courier;" title="On riigipüha ja puhkepäev.">*</strong></td><td>On riigipüha ja puhkepäev.</td></tr>
 
-<tr><td><img style="lipp" src="lp.gif" title="On lipu(heiskamis)päev." alt="On lipu(heiskamis)päev."/></td><td>On lipu(heiskamis)päev.</td></tr>
+<tr><td><img style="lipp" src="img/lp.gif" title="On lipu(heiskamis)päev." alt="On lipu(heiskamis)päev."/></td><td>On lipu(heiskamis)päev.</td></tr>
 
 </table>
 
@@ -75,12 +75,12 @@ Niisiis tuleb arvestada, et <a href="http://en.wikipedia.org/wiki/Gregorian_cale
 Allikas: Poulsen, E. The transition from Julian to Gregorian Calendar. <a href="http://www.rundetaarn.dk/engelsk/observatorium/gregorian.html" target="_blank">http://www.rundetaarn.dk/engelsk/observatorium/gregorian.html</a> 
 <br /><br />
 
-Samuti ei suuda siinkasutatud <a href="tahtpaevad.html#2000">munapüha</a> leidmise nn. <a href="http://en.wikipedia.org/wiki/Computus#Gauss_algorithm" target="_blank">Gaussi valem</a> arvutada kevadisi liikuvaid kirikupühi väljaspool aastavahemikku 1500 ... 2299.
+Samuti ei suuda siinkasutatud <a href="tahtpaevad.php#2000">munapüha</a> leidmise nn. <a href="http://en.wikipedia.org/wiki/Computus#Gauss_algorithm" target="_blank">Gaussi valem</a> arvutada kevadisi liikuvaid kirikupühi väljaspool aastavahemikku 1500 ... 2299.
 
 
 <h1><a name="ab">Andmebaas</a></h1>
 
-on 44 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
+on 46 kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
 
 Eeldusel et igal tähtpäeval on vähemalt 1 link tabelis urls, oleks lihtne päring kõigi andmete kättesaamiseks:
 <blockquote><pre>
@@ -139,19 +139,19 @@ Nädala number aasta sees, 01...53.
 
 <tr><td valign="top">n</td><td valign="top">0</td><td valign="top">6</td><td valign="top">Nädalapäev</td><td valign="top">
 
-<a href="ruunid.html#0">Nädalapäevad</a>.
+<a href="ruunid.php#0">Nädalapäevad</a>.
 
 </td></tr>
 
 <tr><td valign="top"> </td><td valign="top">10</td><td valign="top">17</td><td valign="top">Astronoomiline</td><td valign="top">
 
-<a href="ruunid.html#10">Kuufaasid</a>.
+<a href="ruunid.php#10">Kuufaasid</a>.
 
 </td></tr>
 
 <tr><td valign="top">= 20 + ( KK / 3 )</td><td valign="top">20</td><td valign="top">24</td><td valign="top">Astronoomiline</td><td valign="top">
 
-<a href="tahtpaevad.html#pqqrip2evad">Pööripäevad</a>.
+<a href="tahtpaevad.php#pqqrip2evad">Pööripäevad</a>.
 
 </td></tr>
 
@@ -169,25 +169,25 @@ Päikseloojang.
 
 <tr><td valign="top">KKPP</td><td valign="top">101</td><td valign="top">1231</td><td valign="top">Liikumatu</td><td valign="top">
 
-<a href="tahtpaevad.html#q1">Kindlal kalendripäeval olev tähtpäev</a>.
+<a href="tahtpaevad.php#q1">Kindlal kalendripäeval olev tähtpäev</a>.
 
 </td></tr>
 
 <tr><td valign="top">= 2000 + x</td><td valign="top">1635</td><td valign="top">2365</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-<a href="tahtpaevad.html#munapyhad">Munapühad</a>: x päeva 1. ülestõusmispühast.
+<a href="tahtpaevad.php#munapyhad">Munapühad</a>: x päeva 1. ülestõusmispühast.
 
 </td></tr>
 
 <tr><td valign="top">3VVn</td><td valign="top">3010</td><td valign="top">3536</td><td valign="top">Liikuv, usuline</td><td valign="top">
 
-<a href="tahtpaevad.html#advent">Advent</a>: VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
+<a href="tahtpaevad.php#advent">Advent</a>: VV-inda nädala n-is nädalapäev enne 1. jõulupüha.
 
 </td></tr>
 
 <tr><td valign="top">1KKNn</td><td valign="top">10110</td><td valign="top">11256</td><td valign="top">Liikuv</td><td valign="top">
 
-<a href="tahtpaevad.html#liikuvad">KK-nda kuu N-da nädala n-is nädalapäev</a>. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
+<a href="tahtpaevad.php#liikuvad">KK-nda kuu N-da nädala n-is nädalapäev</a>. Vt. <a href="http://www.gnu.org/s/hello/manual/libc/TZ-Variable.html" target="_blank">POSIX TZ muutuja</a> DST osa formaat Mm.w.d.
 
 </td></tr>
 
@@ -407,9 +407,9 @@ Lingid mingile tähtpäevale.<br/><br/>
 <a href="https://github.com/l6gistaja/kalender">https://github.com/l6gistaja/kalender</a>
 
 <br/><br/>
-Viimati uuendatud 2013-05-24 09:45:09.
+Viimati uuendatud 2017-03-19 04:10:02.
 <br/><br/>
-<center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.html">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.html">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
+<center><a href="index.php">Kalender</a>&nbsp;|&nbsp;<a href="tahtpaevad.php">Tähtpäevad</a>&nbsp;|&nbsp;<a href="ruunid.php">Ruunid</a>&nbsp;|&nbsp;<strong>Abilehekülg</strong></center>
 
 </div>
 

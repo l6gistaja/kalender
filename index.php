@@ -41,10 +41,10 @@ echo " <a href=\""
 
 &nbsp;&nbsp;
 
-<a href="<? echo get_calendar_url($aasta, $kuu -12, $ekr); ?>" title="Eelnev aasta">&lt;</a>
+<a href="<?= get_calendar_url($aasta, $kuu -12, $ekr); ?>" title="Eelnev aasta">&lt;</a>
 <input type="text" name="aasta" size="4" value="<?php echo $aasta; ?>" onChange="this.form.submit();">
 
-<a href="<? echo get_calendar_url($aasta, $kuu +12, $ekr); ?>" title="Järgnev aasta">&gt;</a>
+<a href="<?= get_calendar_url($aasta, $kuu +12, $ekr); ?>" title="Järgnev aasta">&gt;</a>
  a.&nbsp;&nbsp;
 
 <input type="checkbox" name="ekr" value="1"<?php if($ekr==1) { echo 'checked'; } ?> onChange="this.form.submit();"> e. Kr. või 
@@ -197,7 +197,7 @@ for($kuup2ev=1;$kuup2ev<=$p2evi_kuus; $kuup2ev++, $i++)
 
 		if($lipup2ev) { array_push($html_muud, 
 		  (count($html_muud)?'':'&nbsp;')
-		    ."<img style=\"lipp\" src=\"lp.gif\" title=\"{$i18net['lipup2ev']}\" alt=\"{$i18net['lipup2ev']}\"/>"); }
+		    ."<img style=\"lipp\" src=\"img/lp.gif\" title=\"{$i18net['lipup2ev']}\" alt=\"{$i18net['lipup2ev']}\"/>"); }
             
 		$html_muud = array_unique($html_muud);
         

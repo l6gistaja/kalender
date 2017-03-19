@@ -65,7 +65,7 @@ foreach ($dbh->query("select column_name from bitmaps group by column_name order
 
 <tr><td><strong style="color:red; font-family:courier;" title="<?php echo $i18net['puhkep2ev']; ?>">*</strong></td><td><?php echo $i18net['puhkep2ev']; ?></td></tr>
 
-<tr><td><img style="lipp" src="lp.gif" title="<?php echo $i18net['lipup2ev']; ?>" alt="<?php echo $i18net['lipup2ev']; ?>"/></td><td><?php echo $i18net['lipup2ev']; ?></td></tr>
+<tr><td><img style="lipp" src="img/lp.gif" title="<?php echo $i18net['lipup2ev']; ?>" alt="<?php echo $i18net['lipup2ev']; ?>"/></td><td><?php echo $i18net['lipup2ev']; ?></td></tr>
 
 </table>
 

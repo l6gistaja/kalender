@@ -13,10 +13,24 @@ echo '<center>';
 echo $html_navigation = html_navigation_bar();
 echo '</center>';
 
-$mall_abid = '<br />ID andmebaasis: <a href="#{abid}">{abid}</a>'."\n";
+$mall_abid = '<br />ID andmebaasis: <a href="#{abid}" title="Püsilink">{abid}</a>'."\n";
 $eid = -1;
 $linkno = 0;
-$main_searchsite = 'http://arhiiv.err.ee/otsi/';
+
+$maausu_kuud = array(
+  'Südakuu',
+  'Radokuu',
+  'Urbekuu',
+  'Mahlakuu',
+  'Lehekuu',
+  'Pärnakuu',
+  'Heinakuu',
+  'Põimukuu',
+  'Sügiskuu',
+  'Porikuu',
+  'Kooljakuu',
+  'Jõulukuu'
+);
 
 $index = array(
     array(
@@ -43,7 +57,7 @@ $index = array(
 for($i=11; $i>-1; $i--) {
   array_unshift($index, array(
       'min' => ($i+1) *100,
-      'i8n' => $i18net['kuu'][$i],
+      'i8n' => $i18net['kuu'][$i].' / '.$maausu_kuud[$i],
       'a' => 'q'.($i+1),
     )
     );
@@ -67,46 +81,11 @@ for($i=0; $i<count($index); $i++) {
   }
 }
 echo '</ol>'. "\n";
-?>
 
-<script type="text/javascript">
-
-    var searchConf = {
-        main_searchsite : '<?php echo $main_searchsite; ?>',
-        choices : [
-            { urlPrefix : '<?php echo $main_searchsite; ?>', site: 'ERR arhiiv' },
-            { urlPrefix : 'http://www.google.ee/search?q=', site: 'Google' }
-        ]
-    }
-    
-    document.writeln('<strong>Vali otsingusait : </strong><select id="searchsite">');
-    for(i=0;i<searchConf.choices.length;i++) {
-        document.writeln('<option'
-            + (searchConf.choices[i].urlPrefix==searchConf.main_searchsite ?' selected="selected"':'')
-            + '>' + searchConf.choices[i].site + '</option>');
-    }
-    document.writeln('</select>');
-    
-    function s(link) {
-         selector = document.getElementById("searchsite");
-         i = selector.selectedIndex;
-         if(searchConf.choices[i].urlPrefix == searchConf.main_searchsite) {
-            return true;
-         } else {
-            location.href = searchConf.choices[i].urlPrefix
-                + link.href.substr(searchConf.main_searchsite.length);
-            return false;
-         }
-    }
-    
-    
-</script>
-
-<?php 
 $urlcategory0 = '';
 $paragraph = 0;
 
-$sql = "SELECT e.*, u.urlcategory_id, u.url, u.flags, c.urlcategory, c.urlprefix"
+$sql = "SELECT e.*, u.urlcategory_id, u.url, u.flags, e.flags as eflags, c.urlcategory, c.urlprefix"
   ." FROM events e, urls u, urlcategories c"
   ." WHERE e.id = u.event_id AND u.urlcategory_id = c.id"
   //." AND e.maausk IS NOT NULL AND e.maausk <> ''" //maausu filter
@@ -115,7 +94,7 @@ $sql = "SELECT e.*, u.urlcategory_id, u.url, u.flags, c.urlcategory, c.urlprefix
 
 foreach ($dbh->query($sql) as $row) {
 
-    $row = array_merge($row, eventflags($row['id'],$row['flags']));
+    $row = array_merge($row, eventflags($row['id'],$row['eflags']));
       
     if($eid != $row['id']) {
 
@@ -194,12 +173,22 @@ foreach ($dbh->query($sql) as $row) {
         $event_name_a0 = explode('.',$event_name);
         $event_name_a1 = array();
         foreach($event_name_a0 as $event_name_el) {
-            $event_name_a1[] = '<a href="'
-                .$main_searchsite
-                .trim(preg_replace('/\(\d+\)/','',$event_name_el))
-                .'" target="_blank" onclick="return s(this);">'
-                .$event_name_el
-                .'</a>';
+	    $titletxt = trim(preg_replace('/\(\d+\)/','',$event_name_el));
+	    $titlehtml = $event_name_el;
+            foreach(array(
+		array('urlPrefix' => 'http://www.google.com/search?q=', 'site' => 'Otsi Googlest', 'img' =>'lg.gif'),
+		array('urlPrefix' => 'http://arhiiv.err.ee/otsi/', 'site' => 'Otsi ERR arhiivist', 'img' =>'le.gif')
+	    ) as $searchrow) {
+		$titlehtml .= '&nbsp;<a href="'
+		    .$searchrow['urlPrefix']
+		    .$titletxt
+		    .'" title="'
+		    .$searchrow['site']
+		    .'" target="_blank"><img src="img/'
+		    .$searchrow['img']
+		    .'"/></a>';
+	    }
+            $event_name_a1[] = $titlehtml;
         }
         
         echo  "\n" . "\n" . '<br /><br /><strong><a name="' .
@@ -216,29 +205,12 @@ foreach ($dbh->query($sql) as $row) {
                 ."</strong>\n";
         }
         
-        if($row['dayflag'] == '1') {
-            echo '<br /><img src="est.gif" width=71 height=46 alt="" align=left><strong>*</strong> '
-	      . $i18net['lipup2ev']
-	      . "\n";
-        }
-        
-        if($row['dayfree'] == '1') {
-            echo '<br /><strong><font color="red">*</font></strong> '
-	      . $i18net['puhkep2ev']
-	      . "\n";
-        }
-
-        if($row['daystate'] == '1') {
-            echo '<br /><strong>*</strong> '
-	      . $i18net['t2htp2ev']
-	      . "\n";
-        }
-        
-        if($row['shorterworkdayb4'] == '1') {
-            echo '<br /><strong>*</strong> '
-          . $i18net['lyhendet_tqqp2ev']
-          . "\n";
-        }
+        foreach(array(
+	  'dayflag' => '<img src="img/est.gif" width="71" height="46" align="left"><strong>*</strong> '.$i18net['lipup2ev'],
+	  'dayfree' => '<strong><font color="red">*</font></strong> '.$i18net['puhkep2ev'],
+	  'daystate' => '<strong>*</strong> '.$i18net['t2htp2ev'],
+	  'shorterworkdayb4' => '<strong>*</strong> '.$i18net['lyhendet_tqqp2ev']
+        ) as $flag => $flagtxt) { if($row[$flag] == '1') { echo '<br />'.$flagtxt."\n"; } }
         
         echo $weekday;
         
@@ -289,13 +261,12 @@ echo str_replace('{abid}',$eid,$mall_abid);
 
 echo '<br/><br/><br/><h1><a name="allikad">Peamised allikad ja viited</a></h1><ol>'."\n";
 
-foreach ($dbh->query(
-  "SELECT c.urlcategory as c_urlcategory, c.site as c_site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id"
+$sql = "SELECT c.urlcategory as c_urlcategory, c.site as c_site, count(u.id) as ucc, c.id  FROM urlcategories c, urls u WHERE  c.id = u.urlcategory_id"
   ." AND c.http_status = 200" //surnud linkide filter
-  ." GROUP BY c.id ORDER BY c.urlcategory"
-) as $src) {
+  ." GROUP BY c.id ORDER BY c.urlcategory";
+foreach ($dbh->query($sql) as $src) {
   echo '<li>'.$src['c_urlcategory'].' ('.$src['ucc'].')'
-  .( $src['id'] != '0' ? ':   <a href="'.$src['c_site'].'">'.$src['c_site'].'</a>' : '')
+  .( $src['id'] != '0' ? ':   <a href="'.$src['c_site'].'" target="_blank">'.$src['c_site'].'</a>' : '')
   .'</li>'."\n";
   //echo '<li>'."\n";print_r($src);echo '</li>'."\n";
 }

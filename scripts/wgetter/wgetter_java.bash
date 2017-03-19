@@ -21,8 +21,8 @@ cp ../../kalender.sdb ${javadir}/
 cp ../../descriptions.sdb ${javadir}/
 cp ../../kalender.css ${javadir}/
 cp ../../kalender.js ${javadir}/
-cp ../../lp.gif ${javadir}/
-cp ../../est.gif ${javadir}/
+cp ../../img/lp.gif ${javadir}/
+cp ../../img/est.gif ${javadir}/
 cp ../../favicon.ico ${javadir}/
 cp -r ../../svg/ ${javadir}/
 cp -r ../../txt/ ${javadir}/
