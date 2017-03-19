@@ -18,17 +18,17 @@ $eid = -1;
 $linkno = 0;
 
 $maausu_kuud = array(
-  'Südakuu',
-  'Radokuu',
-  'Urbekuu',
-  'Mahlakuu',
+  'Südakuu / Näärikuu',
+  'Radokuu / Küünlakuu',
+  'Urbekuu / Paastukuu',
+  'Mahlakuu / Jürikuu',
   'Lehekuu',
-  'Pärnakuu',
+  'Pärnakuu / Jaanikuu',
   'Heinakuu',
-  'Põimukuu',
-  'Sügiskuu',
-  'Porikuu',
-  'Kooljakuu',
+  'Põimukuu / Lõikuskuu',
+  'Sügiskuu / Mihklikuu',
+  'Porikuu / Viinakuu',
+  'Kooljakuu / Talvekuu',
   'Jõulukuu'
 );
 
