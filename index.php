@@ -23,7 +23,7 @@ $op_aasta=($ekr)?1-$aasta:$aasta;
 
 echo "<a href=\""
   .get_calendar_url($aasta, $kuu -1, $ekr)
-  ."\" title=\"Eelnev kuu\">&lt;</a> ";
+  ."\" title=\"Eelnev kuu\" rel=\"nofollow\">&lt;</a> ";
 
 echo "<select name=\"kuu\" onChange=\"this.form.submit();\">\n";
 foreach($i18net['kuu'] as $v6ti => $v22rtus) {
@@ -35,16 +35,15 @@ echo "</select>";
 
 echo " <a href=\""
   .get_calendar_url($aasta, $kuu +1, $ekr)
-  ."\" title=\"Järgnev kuu\">&gt;</a>";
+  ."\" title=\"Järgnev kuu\" rel=\"nofollow\">&gt;</a>";
   
  ?>
 
 &nbsp;&nbsp;
-
-<a href="<?= get_calendar_url($aasta, $kuu -12, $ekr); ?>" title="Eelnev aasta">&lt;</a>
+<a href="<?= get_calendar_url($aasta, $kuu -12, $ekr); ?>" title="Eelnev aasta" rel="nofollow">&lt;</a>
 <input type="text" name="aasta" size="4" value="<?php echo $aasta; ?>" onChange="this.form.submit();">
 
-<a href="<?= get_calendar_url($aasta, $kuu +12, $ekr); ?>" title="Järgnev aasta">&gt;</a>
+<a href="<?= get_calendar_url($aasta, $kuu +12, $ekr); ?>" title="Järgnev aasta" rel="nofollow">&gt;</a>
  a.&nbsp;&nbsp;
 
 <input type="checkbox" name="ekr" value="1"<?php if($ekr==1) { echo 'checked'; } ?> onChange="this.form.submit();"> e. Kr. või 
