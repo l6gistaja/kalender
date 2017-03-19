@@ -609,5 +609,5 @@ $calendardata = array (
       'n' => 'Talvine jüripäev',
     ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2017-03-19 04:10:02',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2017-03-19 04:52:28',
 );
