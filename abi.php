@@ -3,6 +3,7 @@
 include('includes/web_init.php'); 
 include('includes/web_header.php');
 $dbh = new PDO($init_data['dbc_descr']);
+$db_file = str_replace('sqlite:','', $init_data['dbc']);
 
 ?>
 
@@ -95,7 +96,7 @@ Samuti ei suuda siinkasutatud <a href="tahtpaevad<?php echo $init_data['static_e
 
 <h1><a name="ab">Andmebaas</a></h1>
 
-on <?php echo (filesize('kalender.sdb')>>10) ?> kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="kalender.sdb">kalender.sdb</a>, mille kasutamisele autor piiranguid ei sea. <br/>
+on <?= (filesize($db_file)>>10) ?> kB <a href="http://www.sqlite.com/" target="_blank">SQLite</a> andmebaasifail <a href="<?= $db_file ?>"><?= $db_file ?></a>, mille kasutamisele autor piiranguid ei sea. <br/>
 
 Eeldusel et igal tähtpäeval on vähemalt 1 link tabelis urls, oleks lihtne päring kõigi andmete kättesaamiseks:
 <blockquote><pre>

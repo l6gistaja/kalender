@@ -10,6 +10,7 @@
 
 baseurl="http://localhost/kalender"
 
+php generate_archive.php
 wget ${baseurl}/ruunid.php
 mv -f ruunid.php ../../ruunid.html
 wget ${baseurl}/tahtpaevad.php
