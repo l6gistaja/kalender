@@ -11,11 +11,11 @@
 baseurl="http://localhost/kalender"
 
 php generate_archive.php
-wget ${baseurl}/ruunid.php
-mv -f ruunid.php ../../ruunid.html
-wget ${baseurl}/tahtpaevad.php
-mv -f tahtpaevad.php ../../tahtpaevad.html
-wget ${baseurl}/abi.php
-mv -f abi.php ../../abi.html
+wget ${baseurl}/ruunid.php?wgetter=1
+mv -f 'ruunid.php?wgetter=1' ../../ruunid.html
+wget ${baseurl}/tahtpaevad.php?wgetter=1
+mv -f 'tahtpaevad.php?wgetter=1' ../../tahtpaevad.html
+wget ${baseurl}/abi.php?wgetter=1
+mv -f 'abi.php?wgetter=1' ../../abi.html
 wget ${baseurl}/calendar_data.php?wgetter=1
 mv -f 'calendar_data.php?wgetter=1' ../../includes/calendar_data_static.php

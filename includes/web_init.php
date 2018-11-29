@@ -10,7 +10,7 @@ $init_data = array(
 
 // BUILDING OTHER CONF // BUILDING OTHER CONF // BUILDING OTHER CONF // BUILDING OTHER CONF 
 
-$init_data['static_extension'] = $init_data['dynamic'] ? '.php' : '.html';
+$init_data['static_extension'] = $init_data['dynamic'] && !isset($_REQUEST['wgetter']) ? '.php' : '.html';
 
 $init_bitmaps = array(
     'events.flags' => array('daystate','dayfree','dayflag','sol','shorterworkdayb4')
