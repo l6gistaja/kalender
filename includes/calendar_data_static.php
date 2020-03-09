@@ -609,5 +609,5 @@ $calendardata = array (
       'l' => 1,
     ),
   ),
-  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2018-12-01 01:59:20',
+  'html_dbcopy' => '<a href="abi.html#ab">Andmebaasi</a>tõmmis loodud 2020-03-09 23:43:40',
 );

@@ -12,7 +12,6 @@ $fragm = [
     'dir' => dirname(__DIR__,$dirs_down).'/txt/'
 ];
 
-
 $dbh = new PDO('sqlite:'.dirname(__DIR__,$dirs_down).'/'.str_replace('sqlite:','', $init_data['dbc']));
 $events = array();
 foreach ($dbh->query("select id, event, maausk from events") as $row) {
@@ -26,7 +25,6 @@ $files = [];
 $previous_id = 0;
 $dbht = new PDO('sqlite:'.dirname(__DIR__,$dirs_down).'/archive.sqlite3');
 
-
 foreach ($dbht->query("select * from archive where description <> '' order by date, url") as $row) {
     $date = (int) $row['date'];
     if($date != $previous_id) {
@@ -38,11 +36,11 @@ foreach ($dbht->query("select * from archive where description <> '' order by da
         $files[] = $date;
         $previous_id = $date;
     }
-    $hash = hash('sha256',$row['url']);
+    $anchor = strtolower(preg_replace(['/[^\s\d\.A-Za-z]/','/\s+/'], ['','_'], str_replace(['Õ','õ','Ä','ä','Ö','ö','Ü','ü'], ['O','o','A','a','O','o','Y','y'], trim($row['name'])))).'_'.$row['id'];
     $file .= '<hr/><a name="'
-        .$hash
+        .$anchor
         .'"></a><h2><a href="#'
-        .$hash
+        .$anchor
         .'" title="Permalink">'
         .$row['name']
         ."</a></h2>\n"
