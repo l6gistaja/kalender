@@ -111,13 +111,14 @@ echo $i18net['kuu'][$kuu-1] ." " .$aasta .(($ekr)?' e. Kr.':'');
 ?></th></tr>
 <tr>
 <td class="k_tn">nädal</td>
-<td class="k_tnp">E</td>
-<td class="k_tnp">T</td>
-<td class="k_tnp">K</td>
-<td class="k_tnp">N</td>
-<td class="k_tnp">R</td>
-<td class="k_tnp">L</td>
-<td class="k_tnp">P</td>
+<?php 
+
+foreach(isset($_REQUEST['linn']) && $_REQUEST['linn'] == 'Tartu'
+? array('R','R','R','R','R','R','R')
+: array('E','T','K','N','R','L','P')
+as $nadalapaev) { echo '<td class="k_tnp">'.$nadalapaev."</td>\n"; }
+
+?>
 </tr>
 <tr><td class="k_tn"><?php echo $n2dala_nr; $n2dala_nr=((($kuu==1)&&($n2dala_nr>1))?1:$n2dala_nr+1); ?>.</td>
 <?php 
